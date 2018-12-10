@@ -1,7 +1,8 @@
 using System;
+using Befunge.Runtime;
 
-namespace Befunge {
+namespace Befunge.Instructions {
     public interface IInstruction {
-        public void execute()
+        void Execute(IBefungeRunTime befungeRunTime);
     }
 }
