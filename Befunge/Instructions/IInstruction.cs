@@ -2,6 +2,6 @@ using System;
 
 namespace Befunge {
     public interface IInstruction {
-        public void execute()
+        void execute(IBefungeRunTime runTime);
     }
 }

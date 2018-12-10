@@ -1,7 +1,10 @@
 using System;
 
-namespace Befunge {
+namespace Befunge.Runtime {
     public interface IBefungeRunTime {
-        public void store(int value);
+        void storeValue(int value);
+        int retrieveLastValue();
+
+        int retrieveLastValueOrDefault(int defaultValue);
     }
 }

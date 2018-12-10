@@ -4,7 +4,6 @@ using System.Collections.Generic;
 namespace Befunge
 {
     public class BefungeInterpreter {
-        private static Stack<int> intStack;
         private static CoOrds currPos;
         private static List<string[]> codeGrid;
 
