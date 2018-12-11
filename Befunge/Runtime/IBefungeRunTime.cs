@@ -2,9 +2,12 @@ using System;
 
 namespace Befunge.Runtime {
     public interface IBefungeRunTime {
-        void storeValue(int value);
-        int retrieveLastValue();
+        char CurrentInstruction { get; set; }
+        string Output { get; set; }
+        void StoreValue(int value);
+        int RetrieveLastValue();
+        int RetrieveLastValueOrDefault(int defaultValue);
 
-        int retrieveLastValueOrDefault(int defaultValue);
+
     }
 }
