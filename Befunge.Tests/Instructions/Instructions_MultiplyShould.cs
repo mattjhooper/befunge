@@ -5,14 +5,14 @@ using Moq;
 
 namespace Befunge.UnitTests.Instructions
 {
-    public class Instructions_AddShould
+    public class Instructions_MultiplyShould
     {
         private readonly IInstruction _add;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_AddShould() 
+        public Instructions_MultiplyShould() 
         {
-            _add = new Add();
+            _add = new Multiply();
             _runtime = new Mock<IBefungeRunTime>();
         }
 
@@ -26,7 +26,7 @@ namespace Befunge.UnitTests.Instructions
 
             // Assert
             _runtime.Verify(r => r.RetrieveLastValue(), Times.Exactly(2));
-            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i==3)), Times.Exactly(1));
+            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i==2)), Times.Exactly(1));
 
         }
 
@@ -45,7 +45,7 @@ namespace Befunge.UnitTests.Instructions
 
             // Assert
             _runtime.Verify(r => r.RetrieveLastValue(), Times.Exactly(2));
-            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i==(a+b))), Times.Exactly(1));
+            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i==(a*b))), Times.Exactly(1));
 
         }
     }

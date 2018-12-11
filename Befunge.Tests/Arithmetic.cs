@@ -12,12 +12,12 @@ namespace Befunge.Test
             Assert.Equal("9", BefungeInterpreter.interpret("9.@"));
         }
         
-        /* 
+         
         [Fact]
         public void AdditionWorks()
         {
             Assert.Equal("3", BefungeInterpreter.interpret("21+.@"));
         }  
-        */      
+              
     }
 }
