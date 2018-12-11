@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
 
-    <IsPackable>false</IsPackable>
+    <IsPackable>false</IsPackable>    
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,5 +16,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Befunge\Befunge.csproj" />
   </ItemGroup>
-
 </Project>
