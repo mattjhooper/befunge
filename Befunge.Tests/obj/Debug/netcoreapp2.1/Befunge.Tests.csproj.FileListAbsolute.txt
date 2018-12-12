@@ -1,0 +1,17 @@
+C:\dev\befunge\Befunge.Tests\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\dev\befunge\Befunge.Tests\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\dev\befunge\Befunge.Tests\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\dev\befunge\Befunge.Tests\bin\Debug\netcoreapp2.1\Befunge.Tests.deps.json
+C:\dev\befunge\Befunge.Tests\bin\Debug\netcoreapp2.1\Befunge.Tests.runtimeconfig.json
+C:\dev\befunge\Befunge.Tests\bin\Debug\netcoreapp2.1\Befunge.Tests.runtimeconfig.dev.json
+C:\dev\befunge\Befunge.Tests\bin\Debug\netcoreapp2.1\Befunge.Tests.dll
+C:\dev\befunge\Befunge.Tests\bin\Debug\netcoreapp2.1\Befunge.Tests.pdb
+C:\dev\befunge\Befunge.Tests\bin\Debug\netcoreapp2.1\Befunge.dll
+C:\dev\befunge\Befunge.Tests\bin\Debug\netcoreapp2.1\Befunge.pdb
+C:\dev\befunge\Befunge.Tests\obj\Debug\netcoreapp2.1\Befunge.Tests.csprojAssemblyReference.cache
+C:\dev\befunge\Befunge.Tests\obj\Debug\netcoreapp2.1\Befunge.Tests.csproj.CoreCompileInputs.cache
+C:\dev\befunge\Befunge.Tests\obj\Debug\netcoreapp2.1\Befunge.Tests.AssemblyInfoInputs.cache
+C:\dev\befunge\Befunge.Tests\obj\Debug\netcoreapp2.1\Befunge.Tests.AssemblyInfo.cs
+C:\dev\befunge\Befunge.Tests\obj\Debug\netcoreapp2.1\Befunge.Tests.csproj.CopyComplete
+C:\dev\befunge\Befunge.Tests\obj\Debug\netcoreapp2.1\Befunge.Tests.dll
+C:\dev\befunge\Befunge.Tests\obj\Debug\netcoreapp2.1\Befunge.Tests.pdb
