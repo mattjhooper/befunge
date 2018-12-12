@@ -2,7 +2,7 @@ using System;
 using Befunge.Runtime;
 
 namespace Befunge.Instructions {
-    public class Default : IInstruction {
+    public class NumberDefault : IInstruction {
         public void Execute(IBefungeRunTime befungeRunTime) {
             int value;
 
@@ -10,7 +10,9 @@ namespace Befunge.Instructions {
                 befungeRunTime.StoreValue(value);
             }
             else {
-                Console.WriteLine("Unsupported Instruction: " + befungeRunTime.CurrentInstruction.ToString());
+                string message = $"Unsupported Instruction: {befungeRunTime.CurrentInstruction.ToString()}.";
+                Console.WriteLine(message);
+                throw new UnsupportedInstructionException(message);
             }
             
         }

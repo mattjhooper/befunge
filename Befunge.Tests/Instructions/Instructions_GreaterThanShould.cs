@@ -5,31 +5,18 @@ using Moq;
 
 namespace Befunge.UnitTests.Instructions
 {
-    public class Instructions_AddShould
+    public class Instructions_GreaterThanShould
     {
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_AddShould() 
+        public Instructions_GreaterThanShould() 
         {
-            _sit = new Add();
+            _sit = new GreaterThan();
             _runtime = new Mock<IBefungeRunTime>();
         }
 
-        [Fact]
-        public void PushCorrectResult() {
-            // Arrange
-            _runtime.SetupSequence(r => r.RetrieveLastValue()).Returns(1).Returns(2);
-
-            // Act
-            _sit.Execute(_runtime.Object);
-
-            // Assert
-            _runtime.Verify(r => r.RetrieveLastValue(), Times.Exactly(2));
-            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i==3)), Times.Exactly(1));
-
-        }
-
+        
         [Theory]
         [InlineData(1, 2)]
         [InlineData(5, 10)]
@@ -45,7 +32,7 @@ namespace Befunge.UnitTests.Instructions
 
             // Assert
             _runtime.Verify(r => r.RetrieveLastValue(), Times.Exactly(2));
-            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i==(a+b))), Times.Exactly(1));
+            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i==(b>a ? 1 : 0))), Times.Exactly(1));
 
         }
     }

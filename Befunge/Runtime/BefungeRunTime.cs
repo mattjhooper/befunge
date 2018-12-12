@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using Befunge.Instructions;
 
 namespace Befunge.Runtime {
     public class BefungeRunTime : IBefungeRunTime {        
@@ -8,6 +9,10 @@ namespace Befunge.Runtime {
         private StringBuilder output = new StringBuilder();
 
         public char CurrentInstruction { get; set; }
+
+        public Direction CurrentDirection { get; set; }
+
+        public CoOrds CurrPos { get; set; }
         public string Output 
         { get 
           { 
@@ -17,8 +22,6 @@ namespace Befunge.Runtime {
           {
               output.Append(value);
           }
-    
-        
         }
 
         public BefungeRunTime() {

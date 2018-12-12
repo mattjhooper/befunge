@@ -1,8 +1,12 @@
 using System;
+using Befunge.Instructions;
 
 namespace Befunge.Runtime {
     public interface IBefungeRunTime {
+        Direction CurrentDirection { get; set; }
         char CurrentInstruction { get; set; }
+        CoOrds CurrPos { get; set; }
+
         string Output { get; set; }
         void StoreValue(int value);
         int RetrieveLastValue();
