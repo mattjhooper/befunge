@@ -17,9 +17,15 @@ namespace Befunge
             
             instuctionsLookup = new Dictionary<char, IInstruction>();
             instuctionsLookup.Add('+', new Add());
+            instuctionsLookup.Add('-', new Subtract());
+            instuctionsLookup.Add('*', new Multiply());
+            instuctionsLookup.Add('/', new Divide());
+            instuctionsLookup.Add('%', new Modulo());
+            instuctionsLookup.Add('!', new LogicalNot());
+            instuctionsLookup.Add('`', new GreaterThan());
             instuctionsLookup.Add('.', new Period());
 
-            IInstruction defaultInstruction = new Default();
+            IInstruction defaultInstruction = new NumberDefault();
             IBefungeRunTime runTime = new BefungeRunTime();
             runTime.CurrentInstruction = befungeCode[currPos.x];
 
