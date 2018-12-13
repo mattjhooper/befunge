@@ -9,11 +9,14 @@ namespace Befunge.UnitTests.Instructions
     {
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
+        private readonly Mock<Direction> _direction;
 
         public Instructions_NumberDefaultShould() 
         {
             _sit = new NumberDefault();
             _runtime = new Mock<IBefungeRunTime>();
+            _direction = new Mock<Direction>();
+            _runtime.SetupProperty(r => r.CurrentDirection, _direction.Object);
         }
 
         [Theory]

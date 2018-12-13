@@ -28,12 +28,13 @@ namespace Befunge
             IInstruction defaultInstruction = new NumberDefault();
             IBefungeRunTime runTime = new BefungeRunTime();
             runTime.CurrentInstruction = befungeCode[currPos.x];
+            runTime.CurrentDirection = new MoveRight();
 
             while (runTime.CurrentInstruction != '@') {
                 IInstruction currentInstruction = instructionsLookup.GetValueOrDefault(runTime.CurrentInstruction, defaultInstruction);
                 currentInstruction.Execute(runTime);
 
-                runTime.CurrentInstruction = befungeCode[++currPos.x];
+                runTime.CurrentInstruction = befungeCode[currPos.x];
             }
 
             return runTime.Output;

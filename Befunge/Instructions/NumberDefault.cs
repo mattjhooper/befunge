@@ -2,8 +2,8 @@ using System;
 using Befunge.Runtime;
 
 namespace Befunge.Instructions {
-    public class NumberDefault : IInstruction {
-        public void Execute(IBefungeRunTime befungeRunTime) {
+    public class NumberDefault : Instruction, IInstruction {
+        public override void Execute(IBefungeRunTime befungeRunTime) {
             int value;
 
             if (Int32.TryParse(befungeRunTime.CurrentInstruction.ToString(), out value)) {
@@ -14,6 +14,8 @@ namespace Befunge.Instructions {
                 Console.WriteLine(message);
                 throw new UnsupportedInstructionException(message);
             }
+
+            base.Execute(befungeRunTime);
             
         }
     }
