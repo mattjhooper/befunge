@@ -2,12 +2,9 @@ using System;
 using Befunge.Runtime;
 
 namespace Befunge.Instructions {
-    public class LogicalNot : Instruction, IInstruction {
+    public class MoveUp : Direction, IInstruction {
         public override void Execute(IBefungeRunTime befungeRunTime) {
-            int val = befungeRunTime.RetrieveLastValue();
-            
-            befungeRunTime.StoreValue(val == 0 ? 1 : 0);
-
+            befungeRunTime.CurrPos = new CoOrds(befungeRunTime.CurrPos.x, befungeRunTime.CurrPos.y-1);            
             base.Execute(befungeRunTime);
         }
     }

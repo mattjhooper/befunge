@@ -13,7 +13,7 @@ namespace Befunge.UnitTests.Instructions
         public Instructions_SubtractShould() 
         {
             _sit = new Subtract();
-            _runtime = new Mock<IBefungeRunTime>();
+            _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]

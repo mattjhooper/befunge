@@ -13,7 +13,7 @@ namespace Befunge.UnitTests.Instructions
         public Instructions_GreaterThanShould() 
         {
             _sit = new GreaterThan();
-            _runtime = new Mock<IBefungeRunTime>();
+            _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         

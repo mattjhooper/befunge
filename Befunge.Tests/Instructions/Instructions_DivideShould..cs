@@ -13,7 +13,7 @@ namespace Befunge.UnitTests.Instructions
         public Instructions_DivideShould() 
         {
             _sit = new Divide();
-            _runtime = new Mock<IBefungeRunTime>();
+            _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]

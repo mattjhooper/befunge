@@ -5,27 +5,27 @@ using Moq;
 
 namespace Befunge.UnitTests.Instructions
 {
-    public class Instructions_MoveRightShould
+    public class Instructions_MoveLeftShould
     {
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_MoveRightShould() 
+        public Instructions_MoveLeftShould() 
         {
-            _sit = new MoveRight();
+            _sit = new MoveLeft();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]
         public void MoveInCorrectDirection() {
             // Arrange
-            _runtime.SetupProperty(r => r.CurrPos, new CoOrds(0,0));
+            _runtime.SetupProperty(r => r.CurrPos, new CoOrds(1,1));
 
             // Act
             _sit.Execute(_runtime.Object);
 
             // Assert
-            _runtime.VerifySet(r => r.CurrPos = new CoOrds(1,0));             
+            _runtime.VerifySet(r => r.CurrPos = new CoOrds(0,1));             
         }
     }
 }

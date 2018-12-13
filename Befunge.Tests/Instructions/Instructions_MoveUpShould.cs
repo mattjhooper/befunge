@@ -5,21 +5,21 @@ using Moq;
 
 namespace Befunge.UnitTests.Instructions
 {
-    public class Instructions_MoveRightShould
+    public class Instructions_MoveUpShould
     {
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_MoveRightShould() 
+        public Instructions_MoveUpShould() 
         {
-            _sit = new MoveRight();
+            _sit = new MoveUp();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]
         public void MoveInCorrectDirection() {
             // Arrange
-            _runtime.SetupProperty(r => r.CurrPos, new CoOrds(0,0));
+            _runtime.SetupProperty(r => r.CurrPos, new CoOrds(1,1));
 
             // Act
             _sit.Execute(_runtime.Object);

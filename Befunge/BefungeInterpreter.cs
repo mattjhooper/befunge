@@ -6,15 +6,12 @@ using Befunge.Runtime;
 namespace Befunge
 {
     public class BefungeInterpreter {
-        private static CoOrds currPos;
         //private static List<string[]> codeGrid;
 
         private static Dictionary<char,IInstruction> instructionsLookup;
 
         public static string interpret(string befungeCode) {
 
-            currPos = new CoOrds(0,0);
-            
             instructionsLookup = new Dictionary<char, IInstruction>();
             instructionsLookup.Add('+', new Add());
             instructionsLookup.Add('-', new Subtract());
@@ -24,17 +21,21 @@ namespace Befunge
             instructionsLookup.Add('!', new LogicalNot());
             instructionsLookup.Add('`', new GreaterThan());
             instructionsLookup.Add('.', new Period());
+            instructionsLookup.Add('>', new MoveRight());
+            instructionsLookup.Add('<', new MoveLeft());
+            instructionsLookup.Add('^', new MoveUp());
+            instructionsLookup.Add('v', new MoveDown());
 
             IInstruction defaultInstruction = new NumberDefault();
-            IBefungeRunTime runTime = new BefungeRunTime();
-            runTime.CurrentInstruction = befungeCode[currPos.x];
-            runTime.CurrentDirection = new MoveRight();
+            IBefungeRunTime runTime = new BefungeRunTime(befungeCode);
+            
+            int i = 0;
 
-            while (runTime.CurrentInstruction != '@') {
+            while (i < 100 && runTime.CurrentInstruction != '@') {
                 IInstruction currentInstruction = instructionsLookup.GetValueOrDefault(runTime.CurrentInstruction, defaultInstruction);
                 currentInstruction.Execute(runTime);
 
-                runTime.CurrentInstruction = befungeCode[currPos.x];
+                i++;
             }
 
             return runTime.Output;

@@ -13,7 +13,7 @@ namespace Befunge.UnitTests.Instructions
         public Instructions_LogicalNotShould() 
         {
             _sit = new LogicalNot();
-            _runtime = new Mock<IBefungeRunTime>();
+            _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         
