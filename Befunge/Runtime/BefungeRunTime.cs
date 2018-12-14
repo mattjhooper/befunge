@@ -50,6 +50,13 @@ namespace Befunge.Runtime {
             return _intStack.Count == 0 ? defaultValue : _intStack.Pop();
         }
 
+        public int ReviewLastValue() {
+            return _intStack.Peek();
+        }
+        public int ReviewLastValueOrDefault(int defaultValue) {
+            return _intStack.Count == 0 ? defaultValue : _intStack.Peek();
+        }
+
         public void ReadInstruction() {
             _currentInstruction = _befungeGrid[CurrPos.y][CurrPos.x];
         }

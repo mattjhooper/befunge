@@ -25,6 +25,9 @@ namespace Befunge
             instructionsLookup.Add('<', new MoveLeft());
             instructionsLookup.Add('^', new MoveUp());
             instructionsLookup.Add('v', new MoveDown());
+            instructionsLookup.Add(' ', new Space());
+            instructionsLookup.Add(':', new Colon());
+            instructionsLookup.Add('_', new Underscore());
 
             IInstruction defaultInstruction = new NumberDefault();
             IBefungeRunTime runTime = new BefungeRunTime(befungeCode);

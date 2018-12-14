@@ -12,6 +12,10 @@ namespace Befunge.Runtime {
         int RetrieveLastValue();
         int RetrieveLastValueOrDefault(int defaultValue);
 
+        int ReviewLastValue();
+        int ReviewLastValueOrDefault(int defaultValue);
+
+
         void ReadInstruction();
 
 
