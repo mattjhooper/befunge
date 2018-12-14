@@ -42,5 +42,57 @@ namespace Befunge.UnitTests.Runtime
 
         }
 
+        [Fact]
+        public void StoreAndRetrieveResults() {
+            // Arrange
+            BefungeRunTime sit = new BefungeRunTime(_befungeCode);
+            
+            // Act
+            sit.StoreValue(3);
+            sit.StoreValue(2);
+            sit.StoreValue(1);
+
+            // Assert
+            Assert.Equal(1, sit.RetrieveLastValue());
+            Assert.Equal(2, sit.RetrieveLastValue());
+            Assert.Equal(3, sit.RetrieveLastValue());
+            Assert.Equal(4, sit.RetrieveLastValueOrDefault(4));
+
+        }
+
+        [Fact]
+        public void StoreAndReviewResults() {
+            // Arrange
+            BefungeRunTime sit = new BefungeRunTime(_befungeCode);
+            
+            // Act
+            sit.StoreValue(3);
+            sit.StoreValue(2);
+            sit.StoreValue(1);
+
+            // Assert
+            Assert.Equal(1, sit.ReviewLastValue());
+            Assert.Equal(1, sit.ReviewLastValue());
+            Assert.Equal(1, sit.RetrieveLastValue());
+            Assert.Equal(2, sit.ReviewLastValue());
+            Assert.Equal(2, sit.RetrieveLastValue());
+            Assert.Equal(3, sit.RetrieveLastValue());
+            Assert.Equal(4, sit.ReviewLastValueOrDefault(4));
+
+        }
+
+        [Fact]
+        public void MovePositionAndReadInstruction() {
+            // Arrange
+            BefungeRunTime sit = new BefungeRunTime(_befungeCode);
+            
+            // Act
+            sit.CurrPos = new CoOrds(1,1);
+            sit.ReadInstruction();
+
+            // Assert
+            Assert.Equal('4', sit.CurrentInstruction);
+        }
+
     }
 }    
