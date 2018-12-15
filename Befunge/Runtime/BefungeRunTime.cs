@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using Befunge.Instructions;
+using Befunge.Mode;
 
 namespace Befunge.Runtime {
     public class BefungeRunTime : IBefungeRunTime {        
@@ -20,7 +21,11 @@ namespace Befunge.Runtime {
 
         public Direction CurrentDirection { get; set; }
 
+        public IMode CurrentMode { get; set; }
+
         public CoOrds CurrPos { get; set; }
+
+        public bool EndProgram { get; set; }
         public string Output 
         { get 
           { 
@@ -35,9 +40,16 @@ namespace Befunge.Runtime {
         public BefungeRunTime(string befungeCode) {
             _befungeGrid = befungeCode.Split("\n");
             _intStack = new Stack<int>();
-            this.CurrPos = new CoOrds(0,0);   
+            CurrPos = new CoOrds(0,0);  
+            CurrentMode = new NumberMode();
+
             ReadInstruction();   
-            CurrentDirection = new MoveRight();      
+            CurrentDirection = new MoveRight(); 
+            EndProgram = false;     
+        }
+
+        public void ExecuteInstruction() {
+            CurrentMode.ExecuteInstruction(this, CurrentInstruction);            
         }
 
         public void StoreValue(int value) {

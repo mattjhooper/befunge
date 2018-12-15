@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using Befunge.Instructions;
+using Befunge.Mode;
 using Befunge.Runtime;
 
 namespace Befunge.UnitTests.Runtime
@@ -39,6 +40,28 @@ namespace Befunge.UnitTests.Runtime
 
             // Assert
             Assert.Equal(typeof(MoveRight), t);
+
+        }
+
+        [Fact]
+        public void HaveCorrectDefaultEndProgram() {
+            // Arrange
+            BefungeRunTime sit = new BefungeRunTime(_befungeCode);
+            
+            // Assert
+            Assert.False(sit.EndProgram);
+
+        }
+
+        [Fact]
+        public void HaveCorrectDefaultMode() {
+            // Arrange
+            BefungeRunTime sit = new BefungeRunTime(_befungeCode);
+            
+            Type t = sit.CurrentMode.GetType();
+
+            // Assert
+            Assert.Equal(typeof(NumberMode), t);
 
         }
 

@@ -39,8 +39,26 @@ namespace Befunge.AcceptanceTests
         public void HandleFactorial()
         {
             Assert.Equal("40320", BefungeInterpreter.interpret("08>:1-:v v *_$.@ \n  ^    _$>\\:^  ^    _$>\\:^"));
+        }
+
+        [Fact]
+        public void HandleLogicalNot()
+        {
+            Assert.Equal("0", BefungeInterpreter.interpret("9!.@"));
+            Assert.Equal("1", BefungeInterpreter.interpret("0!.@"));
+        }  
+
+        [Fact]
+        public void PrintHelloWorld()
+        {
+            Assert.Equal("Hello World!\n", BefungeInterpreter.interpret(">25*\"!dlroW olleH\":v\n                v:,_@\n                >  ^"));
         } 
-        
-              
-    }
+
+        [Fact]
+        public void SupportRandomDirection()
+        {            
+            string output = BefungeInterpreter.interpret("v@.<\n >1^\n>?<^\n >2^");
+            Assert.True("1" == output || "2" == output);
+        } 
+     }
 }
