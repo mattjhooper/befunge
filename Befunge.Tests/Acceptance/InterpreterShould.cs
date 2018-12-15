@@ -28,6 +28,19 @@ namespace Befunge.AcceptanceTests
         {
             Assert.Equal(expectedOutput, BefungeInterpreter.interpret(testInput));
         } 
+
+        [Fact]
+        public void HandleDirectionChanges()
+        {
+            Assert.Equal("123456789", BefungeInterpreter.interpret(">987v>.v\nv456<  :\n>321 ^ _@"));
+        } 
+
+        [Fact]
+        public void HandleFactorial()
+        {
+            Assert.Equal("40320", BefungeInterpreter.interpret("08>:1-:v v *_$.@ \n  ^    _$>\\:^  ^    _$>\\:^"));
+        } 
+        
               
     }
 }

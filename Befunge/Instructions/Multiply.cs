@@ -2,12 +2,14 @@ using System;
 using Befunge.Runtime;
 
 namespace Befunge.Instructions {
-    public class Multiply : IInstruction {
-        public void Execute(IBefungeRunTime befungeRunTime) {
+    public class Multiply : Instruction, IInstruction {
+        public override void Execute(IBefungeRunTime befungeRunTime) {
             int a = befungeRunTime.RetrieveLastValue();
             int b = befungeRunTime.RetrieveLastValue();
 
             befungeRunTime.StoreValue(a * b);
+
+            base.Execute(befungeRunTime);
         }
     }
 }

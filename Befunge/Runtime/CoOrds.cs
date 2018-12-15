@@ -1,8 +1,8 @@
 using System;
 
-namespace Befunge
+namespace Befunge.Runtime
 {
-    struct CoOrds
+    public struct CoOrds
     {
         public int x, y;
 

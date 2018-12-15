@@ -7,13 +7,13 @@ namespace Befunge.UnitTests.Instructions
 {
     public class Instructions_LogicalNotShould
     {
-        private readonly IInstruction _add;
+        private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
         public Instructions_LogicalNotShould() 
         {
-            _add = new LogicalNot();
-            _runtime = new Mock<IBefungeRunTime>();
+            _sit = new LogicalNot();
+            _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         
@@ -27,7 +27,7 @@ namespace Befunge.UnitTests.Instructions
             _runtime.SetupSequence(r => r.RetrieveLastValue()).Returns(val);
 
             // Act
-            _add.Execute(_runtime.Object);
+            _sit.Execute(_runtime.Object);
 
             // Assert
             _runtime.Verify(r => r.RetrieveLastValue(), Times.Exactly(1));

@@ -1,37 +1,64 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using Befunge.Instructions;
 
 namespace Befunge.Runtime {
     public class BefungeRunTime : IBefungeRunTime {        
-        private Stack<int> intStack;
-        private StringBuilder output = new StringBuilder();
+        private Stack<int> _intStack;
+        private readonly string[] _befungeGrid;
+        private StringBuilder _output = new StringBuilder();
 
-        public char CurrentInstruction { get; set; }
+        private char _currentInstruction;
+
+        public char CurrentInstruction { 
+            get
+            {
+                return _currentInstruction;
+            } 
+        }
+
+        public Direction CurrentDirection { get; set; }
+
+        public CoOrds CurrPos { get; set; }
         public string Output 
         { get 
           { 
-              return output.ToString();
+              return _output.ToString();
           }
           set 
           {
-              output.Append(value);
+              _output.Append(value);
           }
-    
-        
         }
 
-        public BefungeRunTime() {
-            intStack = new Stack<int>();
+        public BefungeRunTime(string befungeCode) {
+            _befungeGrid = befungeCode.Split("\n");
+            _intStack = new Stack<int>();
+            this.CurrPos = new CoOrds(0,0);   
+            ReadInstruction();   
+            CurrentDirection = new MoveRight();      
         }
+
         public void StoreValue(int value) {
-            intStack.Push(value);
+            _intStack.Push(value);
         }
         public int RetrieveLastValue() {
-            return intStack.Pop();
+            return _intStack.Pop();
         }
         public int RetrieveLastValueOrDefault(int defaultValue) {
-            return intStack.Count == 0 ? defaultValue : intStack.Pop();
+            return _intStack.Count == 0 ? defaultValue : _intStack.Pop();
+        }
+
+        public int ReviewLastValue() {
+            return _intStack.Peek();
+        }
+        public int ReviewLastValueOrDefault(int defaultValue) {
+            return _intStack.Count == 0 ? defaultValue : _intStack.Peek();
+        }
+
+        public void ReadInstruction() {
+            _currentInstruction = _befungeGrid[CurrPos.y][CurrPos.x];
         }
         
     }

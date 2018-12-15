@@ -9,11 +9,11 @@ namespace Befunge.UnitTests.Instructions
     {
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
-
+        
         public Instructions_NumberDefaultShould() 
         {
             _sit = new NumberDefault();
-            _runtime = new Mock<IBefungeRunTime>();
+            _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Theory]
@@ -29,20 +29,19 @@ namespace Befunge.UnitTests.Instructions
         [InlineData('9', 9)]        
         public void ShouldStoreNumber(char inValue, int outValue) {
             // Arrange
-            _runtime.SetupProperty(r => r.CurrentInstruction, inValue);
+            _runtime.SetupGet(r => r.CurrentInstruction).Returns(inValue); 
             
             // Act
             _sit.Execute(_runtime.Object);
 
             // Assert
             _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i==outValue)), Times.Exactly(1));
-
         }
 
         [Fact]
         public void ShouldThrowUnsupportedInstructionException() {
             // Arrange
-            _runtime.SetupProperty(r => r.CurrentInstruction, 'X');
+            _runtime.SetupGet(r => r.CurrentInstruction).Returns('X'); 
             
             // Act
             var ex = Assert.Throws<UnsupportedInstructionException>(() => _sit.Execute(_runtime.Object));

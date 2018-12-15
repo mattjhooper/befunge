@@ -7,13 +7,13 @@ namespace Befunge.UnitTests.Instructions
 {
     public class Instructions_GreaterThanShould
     {
-        private readonly IInstruction _add;
+        private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
         public Instructions_GreaterThanShould() 
         {
-            _add = new GreaterThan();
-            _runtime = new Mock<IBefungeRunTime>();
+            _sit = new GreaterThan();
+            _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         
@@ -28,7 +28,7 @@ namespace Befunge.UnitTests.Instructions
             _runtime.SetupSequence(r => r.RetrieveLastValue()).Returns(a).Returns(b);
 
             // Act
-            _add.Execute(_runtime.Object);
+            _sit.Execute(_runtime.Object);
 
             // Assert
             _runtime.Verify(r => r.RetrieveLastValue(), Times.Exactly(2));

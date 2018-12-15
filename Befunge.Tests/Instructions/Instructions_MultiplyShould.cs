@@ -7,13 +7,13 @@ namespace Befunge.UnitTests.Instructions
 {
     public class Instructions_MultiplyShould
     {
-        private readonly IInstruction _add;
+        private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
         public Instructions_MultiplyShould() 
         {
-            _add = new Multiply();
-            _runtime = new Mock<IBefungeRunTime>();
+            _sit = new Multiply();
+            _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]
@@ -22,7 +22,7 @@ namespace Befunge.UnitTests.Instructions
             _runtime.SetupSequence(r => r.RetrieveLastValue()).Returns(1).Returns(2);
 
             // Act
-            _add.Execute(_runtime.Object);
+            _sit.Execute(_runtime.Object);
 
             // Assert
             _runtime.Verify(r => r.RetrieveLastValue(), Times.Exactly(2));
@@ -41,7 +41,7 @@ namespace Befunge.UnitTests.Instructions
             _runtime.SetupSequence(r => r.RetrieveLastValue()).Returns(a).Returns(b);
 
             // Act
-            _add.Execute(_runtime.Object);
+            _sit.Execute(_runtime.Object);
 
             // Assert
             _runtime.Verify(r => r.RetrieveLastValue(), Times.Exactly(2));

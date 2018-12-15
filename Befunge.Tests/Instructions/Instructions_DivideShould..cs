@@ -7,13 +7,13 @@ namespace Befunge.UnitTests.Instructions
 {
     public class Instructions_DivideShould
     {
-        private readonly IInstruction _add;
+        private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
         public Instructions_DivideShould() 
         {
-            _add = new Divide();
-            _runtime = new Mock<IBefungeRunTime>();
+            _sit = new Divide();
+            _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]
@@ -22,7 +22,7 @@ namespace Befunge.UnitTests.Instructions
             _runtime.SetupSequence(r => r.RetrieveLastValue()).Returns(3).Returns(9);
 
             // Act
-            _add.Execute(_runtime.Object);
+            _sit.Execute(_runtime.Object);
 
             // Assert
             _runtime.Verify(r => r.RetrieveLastValue(), Times.Exactly(2));
@@ -36,7 +36,7 @@ namespace Befunge.UnitTests.Instructions
             _runtime.SetupSequence(r => r.RetrieveLastValue()).Returns(0).Returns(1);
 
             // Act
-            _add.Execute(_runtime.Object);
+            _sit.Execute(_runtime.Object);
 
             // Assert
             _runtime.Verify(r => r.RetrieveLastValue(), Times.Exactly(2));
@@ -54,7 +54,7 @@ namespace Befunge.UnitTests.Instructions
             _runtime.SetupSequence(r => r.RetrieveLastValue()).Returns(a).Returns(b);
 
             // Act
-            _add.Execute(_runtime.Object);
+            _sit.Execute(_runtime.Object);
 
             // Assert
             _runtime.Verify(r => r.RetrieveLastValue(), Times.Exactly(2));
