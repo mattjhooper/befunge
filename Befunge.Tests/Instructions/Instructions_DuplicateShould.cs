@@ -5,14 +5,14 @@ using Moq;
 
 namespace Befunge.UnitTests.Instructions
 {
-    public class Instructions_ColonShould
+    public class Instructions_DuplicateShould
     {
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_ColonShould() 
+        public Instructions_DuplicateShould() 
         {
-            _sit = new Colon();
+            _sit = new Duplicate();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 

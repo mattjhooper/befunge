@@ -26,18 +26,21 @@ namespace Befunge
             instructionsLookup.Add('^', new MoveUp());
             instructionsLookup.Add('v', new MoveDown());
             instructionsLookup.Add(' ', new Space());
-            instructionsLookup.Add(':', new Colon());
+            instructionsLookup.Add(':', new Duplicate());
             instructionsLookup.Add('_', new Underscore());
+            instructionsLookup.Add('|', new Pipe());
+            instructionsLookup.Add('?', new MoveRandom());
+            instructionsLookup.Add('$', new Discard());
+            instructionsLookup.Add('\\', new Swap());
 
             IInstruction defaultInstruction = new NumberDefault();
             IBefungeRunTime runTime = new BefungeRunTime(befungeCode);
             
             int i = 0;
 
-            while (i < 100 && runTime.CurrentInstruction != '@') {
+            while (i < 1000 && runTime.CurrentInstruction != '@') {
                 IInstruction currentInstruction = instructionsLookup.GetValueOrDefault(runTime.CurrentInstruction, defaultInstruction);
-                currentInstruction.Execute(runTime);
-
+                currentInstruction.Execute(runTime);                
                 i++;
             }
 
