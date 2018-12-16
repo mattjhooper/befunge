@@ -26,10 +26,7 @@ namespace Befunge.UnitTests.Instructions
             _sit.Execute(_runtime.Object);
 
             // Assert
-            Type t = _runtime.Object.CurrentDirection.GetType();
-
-            // Assert
-            Assert.Equal(typeof(MoveRight), t);           
+            Assert.True(_runtime.Object.CurrentDirection is MoveRight);
         }
 
         [Theory]
@@ -45,10 +42,7 @@ namespace Befunge.UnitTests.Instructions
             _sit.Execute(_runtime.Object);
 
             // Assert
-            Type t = _runtime.Object.CurrentDirection.GetType();
-
-            // Assert
-            Assert.Equal(typeof(MoveLeft), t);           
+            Assert.True(_runtime.Object.CurrentDirection is MoveLeft);         
         }
 
     }
