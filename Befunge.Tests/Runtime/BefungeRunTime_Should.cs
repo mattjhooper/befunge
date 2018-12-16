@@ -35,11 +35,8 @@ namespace Befunge.UnitTests.Runtime
             // Arrange
             BefungeRunTime sit = new BefungeRunTime(_befungeCode);
             
-            // Act
-            Type t = sit.CurrentDirection.GetType();
-
             // Assert
-            Assert.Equal(typeof(MoveRight), t);
+            Assert.True(sit.CurrentDirection is MoveRight);
 
         }
 
@@ -58,10 +55,8 @@ namespace Befunge.UnitTests.Runtime
             // Arrange
             BefungeRunTime sit = new BefungeRunTime(_befungeCode);
             
-            Type t = sit.CurrentMode.GetType();
-
             // Assert
-            Assert.Equal(typeof(NumberMode), t);
+            Assert.True(sit.CurrentMode is NumberMode);
 
         }
 
