@@ -11,13 +11,8 @@ namespace Befunge
             
             IBefungeRunTime runTime = new BefungeRunTime(befungeCode);
             
-            int i = 0;
-
-            while (i < 1000 && !runTime.EndProgram) {
-
+            while (!runTime.EndProgram) {
                 runTime.ExecuteInstruction();
-
-                i++;
             }
 
             return runTime.Output;

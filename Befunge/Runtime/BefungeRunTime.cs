@@ -7,7 +7,7 @@ using Befunge.Mode;
 namespace Befunge.Runtime {
     public class BefungeRunTime : IBefungeRunTime {        
         private Stack<int> _intStack;
-        private readonly string[] _befungeGrid;
+        private string[] _befungeGrid;
         private StringBuilder _output = new StringBuilder();
 
         private char _currentInstruction;
@@ -71,6 +71,15 @@ namespace Befunge.Runtime {
 
         public void ReadInstruction() {
             _currentInstruction = _befungeGrid[CurrPos.y][CurrPos.x];
+        }
+
+        public void PutValue(CoOrds putPosition, char value) {
+            char[] yChars = _befungeGrid[putPosition.y].ToCharArray();
+            yChars[putPosition.x] = value;
+            _befungeGrid[putPosition.y] = new string(yChars);
+        }
+        public char GetValue(CoOrds getPosition) {
+            return _befungeGrid[getPosition.y][getPosition.x];
         }
         
     }

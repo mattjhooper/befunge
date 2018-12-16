@@ -112,5 +112,20 @@ namespace Befunge.UnitTests.Runtime
             Assert.Equal('4', sit.CurrentInstruction);
         }
 
+        [Fact]
+        public void PutAndGetCorrectValue() {
+            // Arrange
+            BefungeRunTime sit = new BefungeRunTime(_befungeCode);
+            
+            var putPosition = new CoOrds(1,1);
+
+            // Act
+            sit.PutValue(putPosition, 'X');
+
+            
+            // Assert
+            Assert.Equal('X', sit.GetValue(putPosition));
+        }
+
     }
 }    

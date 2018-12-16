@@ -55,10 +55,26 @@ namespace Befunge.AcceptanceTests
         } 
 
         [Fact]
-        public void SupportRandomDirection()
+        public void HandleRandomDirection()
         {            
             string output = BefungeInterpreter.interpret("v@.<\n >1^\n>?<^\n >2^");
             Assert.True("1" == output || "2" == output);
         } 
+
+        [Fact]
+        public void HandleSieve()
+        {
+            string befungeCode = "2>:3g\" \"-!v\\  g30          <\n |!`\"&\":+1_:.:03p>03g+:\"&\"`|\n @               ^  p3\\\" \":<\n2 2345678901234567890123456789012345678";
+            Assert.Equal("23571113171923293137", BefungeInterpreter.interpret(befungeCode));
+
+        }
+
+        [Fact]
+        public void HandleQuine()
+        {
+            string befungeCode = "01->1# +# :# 0# g# ,# :# 5# 8# *# 4# +# -# _@";
+            Assert.Equal("01->1# +# :# 0# g# ,# :# 5# 8# *# 4# +# -# _@", BefungeInterpreter.interpret(befungeCode));
+
+        }
      }
 }

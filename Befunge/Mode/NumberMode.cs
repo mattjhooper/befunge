@@ -36,6 +36,9 @@ namespace Befunge.Mode {
             _instructionsLookup.Add('@', new EndProgram());
             _instructionsLookup.Add('"', new ToggleStringMode());
             _instructionsLookup.Add(',', new OutputASCII());
+            _instructionsLookup.Add('#', new Trampoline());
+            _instructionsLookup.Add('g', new Get());
+            _instructionsLookup.Add('p', new Put());
         }
 
         public void ExecuteInstruction(IBefungeRunTime runTime, char instruction) {

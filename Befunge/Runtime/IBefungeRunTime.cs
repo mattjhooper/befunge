@@ -26,6 +26,9 @@ namespace Befunge.Runtime {
 
         void ReadInstruction();
 
+        void PutValue(CoOrds putPosition, char value);
+        char GetValue(CoOrds getPosition);
+
 
     }
 }
