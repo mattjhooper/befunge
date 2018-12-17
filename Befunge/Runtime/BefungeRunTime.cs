@@ -11,6 +11,7 @@ namespace Befunge.Runtime {
         private readonly string[] _befungeGrid;
         private char _currentInstruction;
         private Stack<int> _intStack;
+
         private StringBuilder _output = new StringBuilder();
 
         #endregion
@@ -30,6 +31,15 @@ namespace Befunge.Runtime {
         public CoOrds CurrentPosition { get; set; }
 
         public bool EndProgram { get; set; }
+
+        public CoOrds MaxExtent 
+        { get
+            {
+              int y = _befungeGrid.Length - 1;
+              int x = _befungeGrid[CurrentPosition.y].Length -1;
+              return new CoOrds(x, y);
+            }         
+        }
         public string Output 
         { get 
           { 

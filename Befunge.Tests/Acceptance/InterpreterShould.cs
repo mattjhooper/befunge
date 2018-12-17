@@ -52,6 +52,7 @@ namespace Befunge.AcceptanceTests
         public void PrintHelloWorld()
         {
             Assert.Equal("Hello World!\n", BefungeInterpreter.Interpret(">25*\"!dlroW olleH\":v\n                v:,_@\n                >  ^"));
+            Assert.Equal("Hello World!", BefungeInterpreter.Interpret("v>  ,,,,,,,,,,,,@\n<^\"Hello World!\""));                         
         } 
 
         [Fact]

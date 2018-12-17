@@ -15,6 +15,8 @@ namespace Befunge.Runtime {
         CoOrds CurrentPosition { get; set; }
         bool EndProgram { get; set; }
 
+        CoOrds MaxExtent { get; }
+
         string Output { get; set; }
 
         #endregion

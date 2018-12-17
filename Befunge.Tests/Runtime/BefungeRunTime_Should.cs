@@ -61,6 +61,23 @@ namespace Befunge.UnitTests.Runtime
         }
 
         [Fact]
+        public void HaveCorrectMaxExtent() {
+            // Arrange
+            BefungeRunTime sit = new BefungeRunTime(_befungeCode);
+
+            var defaultExtent = sit.MaxExtent;
+
+            // Act
+            sit.CurrentPosition = new CoOrds(0,2);
+            
+            // Assert
+            Assert.Equal(new CoOrds(7,2), defaultExtent);
+            Assert.Equal(new CoOrds(8,2), sit.MaxExtent);
+
+
+        }
+
+        [Fact]
         public void StoreAndRetrieveResults() {
             // Arrange
             BefungeRunTime sit = new BefungeRunTime(_befungeCode);
