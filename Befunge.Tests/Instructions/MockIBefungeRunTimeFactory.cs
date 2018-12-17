@@ -12,6 +12,7 @@ namespace Befunge.UnitTests.Instructions {
             Mock<NumberMode> _mode = new Mock<NumberMode>();
             _runtime.SetupProperty(r => r.CurrentDirection, _direction.Object);
             _runtime.SetupProperty(r => r.CurrentMode, _mode.Object);
+            _runtime.SetupGet(r => r.MaxExtent).Returns(new CoOrds(10,10));
 
             return _runtime;
         }

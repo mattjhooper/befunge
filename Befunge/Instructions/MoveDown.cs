@@ -4,7 +4,8 @@ using Befunge.Runtime;
 namespace Befunge.Instructions {
     public class MoveDown : Direction, IInstruction {
         public override void Execute(IBefungeRunTime befungeRunTime) {
-            befungeRunTime.CurrentPosition = new CoOrds(befungeRunTime.CurrentPosition.x, befungeRunTime.CurrentPosition.y+1);            
+            int y = befungeRunTime.MaxExtent.y == befungeRunTime.CurrentPosition.y ? 0 : befungeRunTime.CurrentPosition.y+1;
+            befungeRunTime.CurrentPosition = new CoOrds(befungeRunTime.CurrentPosition.x, y);            
             base.Execute(befungeRunTime);
         }
     }

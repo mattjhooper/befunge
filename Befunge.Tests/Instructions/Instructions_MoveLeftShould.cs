@@ -27,5 +27,18 @@ namespace Befunge.UnitTests.Instructions
             // Assert
             _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(0,1));             
         }
+
+        [Fact]
+        public void WrapAround() {
+            // Arrange
+            _runtime.SetupProperty(r => r.CurrentPosition, new CoOrds(0,0));
+            _runtime.SetupGet(r => r.MaxExtent).Returns(new CoOrds(10,10));
+
+            // Act
+            _sit.Execute(_runtime.Object);
+
+            // Assert
+            _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(10,0));             
+        }
     }
 }
