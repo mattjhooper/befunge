@@ -2,7 +2,7 @@ using System;
 using Befunge.Runtime;
 
 namespace Befunge.Instructions {
-    public class Period : Instruction, IInstruction {
+    public class OutputNumber : Instruction, IInstruction {
         public override void Execute(IBefungeRunTime befungeRunTime) {
             int a = befungeRunTime.RetrieveLastValue();
             

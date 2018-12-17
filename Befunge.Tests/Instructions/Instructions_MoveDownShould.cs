@@ -19,13 +19,13 @@ namespace Befunge.UnitTests.Instructions
         [Fact]
         public void MoveInCorrectDirection() {
             // Arrange
-            _runtime.SetupProperty(r => r.CurrPos, new CoOrds(0,0));
+            _runtime.SetupProperty(r => r.CurrentPosition, new CoOrds(0,0));
 
             // Act
             _sit.Execute(_runtime.Object);
 
             // Assert
-            _runtime.VerifySet(r => r.CurrPos = new CoOrds(0,1));             
+            _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(0,1));             
         }
     }
 }

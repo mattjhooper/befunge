@@ -4,12 +4,25 @@ using Befunge.Runtime;
 
 namespace Befunge.Mode {
     public class NumberMode : IMode {
-        private readonly Dictionary<char,IInstruction> _instructionsLookup;
-        private readonly IInstruction _defaultInstruction = new NumberDefault();
 
+        #region fields
+        private readonly IInstruction _defaultInstruction = new NumberDefault();
+        private readonly Dictionary<char,IInstruction> _instructionsLookup;
+
+        #endregion
+
+        #region constructors
         public NumberMode() {
             _instructionsLookup = new Dictionary<char, IInstruction>();
             SetupInstructionLookup();
+        }
+
+        #endregion
+
+        #region methods
+        public void ExecuteInstruction(IBefungeRunTime runTime, char instruction) {
+            IInstruction currentInstruction = _instructionsLookup.GetValueOrDefault(runTime.CurrentInstruction, _defaultInstruction);
+            currentInstruction.Execute(runTime); 
         }
 
         private void SetupInstructionLookup() {
@@ -21,15 +34,15 @@ namespace Befunge.Mode {
             _instructionsLookup.Add('%', new Modulo());
             _instructionsLookup.Add('!', new LogicalNot());
             _instructionsLookup.Add('`', new GreaterThan());
-            _instructionsLookup.Add('.', new Period());
+            _instructionsLookup.Add('.', new OutputNumber());
             _instructionsLookup.Add('>', new MoveRight());
             _instructionsLookup.Add('<', new MoveLeft());
             _instructionsLookup.Add('^', new MoveUp());
             _instructionsLookup.Add('v', new MoveDown());
-            _instructionsLookup.Add(' ', new Space());
+            _instructionsLookup.Add(' ', new Ignore());
             _instructionsLookup.Add(':', new Duplicate());
-            _instructionsLookup.Add('_', new Underscore());
-            _instructionsLookup.Add('|', new Pipe());
+            _instructionsLookup.Add('_', new BranchLeftOrRight());
+            _instructionsLookup.Add('|', new BranchUpOrDown());
             _instructionsLookup.Add('?', new MoveRandom());
             _instructionsLookup.Add('$', new Discard());
             _instructionsLookup.Add('\\', new Swap());
@@ -41,9 +54,6 @@ namespace Befunge.Mode {
             _instructionsLookup.Add('p', new Put());
         }
 
-        public void ExecuteInstruction(IBefungeRunTime runTime, char instruction) {
-            IInstruction currentInstruction = _instructionsLookup.GetValueOrDefault(runTime.CurrentInstruction, _defaultInstruction);
-            currentInstruction.Execute(runTime); 
-        }
+        #endregion       
     }
 }

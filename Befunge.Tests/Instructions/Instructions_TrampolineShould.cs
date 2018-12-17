@@ -25,14 +25,14 @@ namespace Befunge.UnitTests.Instructions
         public void SkipNextCellInCorrectDIrection(Type currentDirectionType, int oldX, int oldY, int newX, int newY) {
             // Arrange
             Direction currentDirection = (Direction)Activator.CreateInstance(currentDirectionType);
-            _runtime.SetupProperty(r => r.CurrPos, new CoOrds(oldX, oldY));
+            _runtime.SetupProperty(r => r.CurrentPosition, new CoOrds(oldX, oldY));
             _runtime.SetupProperty(r => r.CurrentDirection, currentDirection);
 
             // Act
             _sit.Execute(_runtime.Object);
 
             // Assert
-            _runtime.VerifySet(r => r.CurrPos = new CoOrds(newX, newY));   
+            _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(newX, newY));   
         }
 
     }

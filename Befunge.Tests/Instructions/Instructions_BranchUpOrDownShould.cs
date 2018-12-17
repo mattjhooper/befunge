@@ -6,14 +6,14 @@ using Moq;
 
 namespace Befunge.UnitTests.Instructions
 {
-    public class Instructions_PipeShould
+    public class Instructions_BranchUpOrDownShould
     {
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_PipeShould() 
+        public Instructions_BranchUpOrDownShould() 
         {
-            _sit = new Pipe();
+            _sit = new BranchUpOrDown();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 

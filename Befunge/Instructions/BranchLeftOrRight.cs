@@ -2,7 +2,7 @@ using System;
 using Befunge.Runtime;
 
 namespace Befunge.Instructions {
-    public class Underscore : Instruction, IInstruction {
+    public class BranchLeftOrRight : Instruction, IInstruction {
         public override void Execute(IBefungeRunTime befungeRunTime) {
             int val = befungeRunTime.RetrieveLastValue();
 
