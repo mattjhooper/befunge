@@ -2,9 +2,10 @@ using System;
 using Befunge.Runtime;
 
 namespace Befunge.Instructions {
-    public class MoveDown : Direction, IInstruction {
+    public class Trampoline : Instruction, IInstruction {
         public override void Execute(IBefungeRunTime befungeRunTime) {
-            befungeRunTime.CurrentPosition = new CoOrds(befungeRunTime.CurrentPosition.x, befungeRunTime.CurrentPosition.y+1);            
+            befungeRunTime.CurrentDirection.Execute(befungeRunTime);
+                        
             base.Execute(befungeRunTime);
         }
     }

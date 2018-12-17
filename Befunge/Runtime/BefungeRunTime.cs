@@ -5,13 +5,18 @@ using Befunge.Instructions;
 using Befunge.Mode;
 
 namespace Befunge.Runtime {
-    public class BefungeRunTime : IBefungeRunTime {        
-        private Stack<int> _intStack;
+    public class BefungeRunTime : IBefungeRunTime {  
+
+        #region fields      
         private readonly string[] _befungeGrid;
+        private char _currentInstruction;
+        private Stack<int> _intStack;
         private StringBuilder _output = new StringBuilder();
 
-        private char _currentInstruction;
+        #endregion
 
+        #region properties
+        public Direction CurrentDirection { get; set; }
         public char CurrentInstruction { 
             get
             {
@@ -19,11 +24,10 @@ namespace Befunge.Runtime {
             } 
         }
 
-        public Direction CurrentDirection { get; set; }
 
         public IMode CurrentMode { get; set; }
 
-        public CoOrds CurrPos { get; set; }
+        public CoOrds CurrentPosition { get; set; }
 
         public bool EndProgram { get; set; }
         public string Output 
@@ -37,10 +41,13 @@ namespace Befunge.Runtime {
           }
         }
 
+        #endregion
+
+        #region constructors
         public BefungeRunTime(string befungeCode) {
             _befungeGrid = befungeCode.Split("\n");
             _intStack = new Stack<int>();
-            CurrPos = new CoOrds(0,0);  
+            CurrentPosition = new CoOrds(0,0);  
             CurrentMode = new NumberMode();
 
             ReadInstruction();   
@@ -48,13 +55,27 @@ namespace Befunge.Runtime {
             EndProgram = false;     
         }
 
+        #endregion
+
+        #region methods
+
         public void ExecuteInstruction() {
             CurrentMode.ExecuteInstruction(this, CurrentInstruction);            
         }
 
-        public void StoreValue(int value) {
-            _intStack.Push(value);
+        public char GetValue(CoOrds getPosition) {
+            return _befungeGrid[getPosition.y][getPosition.x];
         }
+
+        public void PutValue(CoOrds putPosition, char value) {
+            char[] yChars = _befungeGrid[putPosition.y].ToCharArray();
+            yChars[putPosition.x] = value;
+            _befungeGrid[putPosition.y] = new string(yChars);
+        }
+        public void ReadInstruction() {
+            _currentInstruction = _befungeGrid[CurrentPosition.y][CurrentPosition.x];
+        }
+
         public int RetrieveLastValue() {
             return _intStack.Pop();
         }
@@ -69,9 +90,15 @@ namespace Befunge.Runtime {
             return _intStack.Count == 0 ? defaultValue : _intStack.Peek();
         }
 
-        public void ReadInstruction() {
-            _currentInstruction = _befungeGrid[CurrPos.y][CurrPos.x];
+        public void StoreValue(int value) {
+            _intStack.Push(value);
         }
+
+       
+
+        
+
+        #endregion
         
     }
 }

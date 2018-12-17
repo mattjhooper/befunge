@@ -2,7 +2,7 @@ using System;
 using Befunge.Runtime;
 
 namespace Befunge.Instructions {
-    public class Pipe : Instruction, IInstruction {
+    public class BranchUpOrDown : Instruction, IInstruction {
         public override void Execute(IBefungeRunTime befungeRunTime) {
             int val = befungeRunTime.RetrieveLastValue();
 

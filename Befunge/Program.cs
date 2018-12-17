@@ -7,8 +7,8 @@ namespace Befunge
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            //Console.WriteLine(BefungeInterpreter.interpret(">987v>.v\nv456<  :\n>321 ^ _@"));
-            //Console.WriteLine(BefungeInterpreter.interpret(">v \n>?<\n ^ \n"));
+            //Console.WriteLine(BefungeInterpreter.Interpret(">987v>.v\nv456<  :\n>321 ^ _@"));
+            //Console.WriteLine(BefungeInterpreter.Interpret(">v \n>?<\n ^ \n"));
         }
     }
 }

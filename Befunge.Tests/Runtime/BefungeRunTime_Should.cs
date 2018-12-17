@@ -16,7 +16,7 @@ namespace Befunge.UnitTests.Runtime
             BefungeRunTime sit = new BefungeRunTime(_befungeCode);
 
             // Assert
-            Assert.Equal(new CoOrds(0,0), sit.CurrPos);
+            Assert.Equal(new CoOrds(0,0), sit.CurrentPosition);
 
         }
 
@@ -105,11 +105,26 @@ namespace Befunge.UnitTests.Runtime
             BefungeRunTime sit = new BefungeRunTime(_befungeCode);
             
             // Act
-            sit.CurrPos = new CoOrds(1,1);
+            sit.CurrentPosition = new CoOrds(1,1);
             sit.ReadInstruction();
 
             // Assert
             Assert.Equal('4', sit.CurrentInstruction);
+        }
+
+        [Fact]
+        public void PutAndGetCorrectValue() {
+            // Arrange
+            BefungeRunTime sit = new BefungeRunTime(_befungeCode);
+            
+            var putPosition = new CoOrds(1,1);
+
+            // Act
+            sit.PutValue(putPosition, 'X');
+
+            
+            // Assert
+            Assert.Equal('X', sit.GetValue(putPosition));
         }
 
     }

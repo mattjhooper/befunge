@@ -6,14 +6,14 @@ using Moq;
 
 namespace Befunge.UnitTests.Instructions
 {
-    public class Instructions_UnderscoreShould
+    public class Instructions_BranchLeftOrRightShould
     {
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_UnderscoreShould() 
+        public Instructions_BranchLeftOrRightShould() 
         {
-            _sit = new Underscore();
+            _sit = new BranchLeftOrRight();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 

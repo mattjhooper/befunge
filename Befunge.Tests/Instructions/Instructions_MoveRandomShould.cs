@@ -42,25 +42,5 @@ namespace Befunge.UnitTests.Instructions
             Assert.True(directionCount.All( v => 1 <= v.Value ));
             
         }
-
-        // [Theory]
-        // [InlineData(1)]
-        // [InlineData(2)]
-        // [InlineData(10)]
-        // [InlineData(-1)]
-        // public void MoveUpForOthers(int val) {
-        //     // Arrange
-        //     _runtime.SetupSequence(r => r.RetrieveLastValue()).Returns(val);
-
-        //     // Act
-        //     _sit.Execute(_runtime.Object);
-
-        //     // Assert
-        //     Type t = _runtime.Object.CurrentDirection.GetType();
-
-        //     // Assert
-        //     Assert.Equal(typeof(MoveUp), t);           
-        // }
-
     }
 }
