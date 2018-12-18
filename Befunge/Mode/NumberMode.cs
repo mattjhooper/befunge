@@ -1,18 +1,30 @@
+using System;
 using System.Collections.Generic;
 using Befunge.Instructions;
 using Befunge.Runtime;
 
 namespace Befunge.Mode {
-    public class NumberMode : IMode {
+    public sealed class NumberMode : IMode {
+
+        #region lazy_singleton
+        private static readonly Lazy<NumberMode> _lazyNumberModeSingleton = new Lazy<NumberMode>(() => new NumberMode());
+
+        #endregion
 
         #region fields
+
         private readonly IInstruction _defaultInstruction = new NumberDefault();
         private readonly Dictionary<char,IInstruction> _instructionsLookup;
 
         #endregion
 
+        #region properties
+        public bool IsNumberMode { get {return true;} }
+
+        #endregion
+
         #region constructors
-        public NumberMode() {
+        private NumberMode() {
             _instructionsLookup = new Dictionary<char, IInstruction>();
             SetupInstructionLookup();
         }
@@ -25,6 +37,8 @@ namespace Befunge.Mode {
             currentInstruction.Execute(runTime); 
         }
 
+        public static NumberMode Instance { get { return _lazyNumberModeSingleton.Value; } }
+
         private void SetupInstructionLookup() {
             _instructionsLookup.Clear();
             _instructionsLookup.Add('+', new Add());
@@ -35,10 +49,10 @@ namespace Befunge.Mode {
             _instructionsLookup.Add('!', new LogicalNot());
             _instructionsLookup.Add('`', new GreaterThan());
             _instructionsLookup.Add('.', new OutputNumber());
-            _instructionsLookup.Add('>', new MoveRight());
-            _instructionsLookup.Add('<', new MoveLeft());
-            _instructionsLookup.Add('^', new MoveUp());
-            _instructionsLookup.Add('v', new MoveDown());
+            _instructionsLookup.Add('>', MoveRight.Instance);
+            _instructionsLookup.Add('<', MoveLeft.Instance);
+            _instructionsLookup.Add('^', MoveUp.Instance);
+            _instructionsLookup.Add('v', MoveDown.Instance);
             _instructionsLookup.Add(' ', new Ignore());
             _instructionsLookup.Add(':', new Duplicate());
             _instructionsLookup.Add('_', new BranchLeftOrRight());

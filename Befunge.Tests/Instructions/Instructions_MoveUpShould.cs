@@ -12,7 +12,7 @@ namespace Befunge.UnitTests.Instructions
 
         public Instructions_MoveUpShould() 
         {
-            _sit = new MoveUp();
+            _sit = MoveUp.Instance;
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 

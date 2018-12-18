@@ -25,22 +25,21 @@ namespace Befunge.UnitTests.Instructions
             _sit.Execute(_runtime.Object);
 
             // Assert
-            Assert.True(_runtime.Object.CurrentMode is StringMode);           
+            Assert.False(_runtime.Object.CurrentMode.IsNumberMode);           
         }
 
         [Fact]
         public void TurnOffStringMode() {
             // Arrange
-            _runtime.SetupProperty(r => r.CurrentMode, (new Mock<StringMode>()).Object);
+            Mock<IMode> mode = new Mock<IMode>(); 
+            mode.SetupGet(m => m.IsNumberMode).Returns(false);
+            _runtime.SetupProperty(r => r.CurrentMode, mode.Object);
             
             // Act
             _sit.Execute(_runtime.Object);
 
             // Assert
-            Assert.True(_runtime.Object.CurrentMode is NumberMode);           
+            Assert.True(_runtime.Object.CurrentMode.IsNumberMode);           
         }
-
-        
-
     }
 }
