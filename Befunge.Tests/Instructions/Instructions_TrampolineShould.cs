@@ -18,15 +18,53 @@ namespace Befunge.UnitTests.Instructions
         }
 
         [Theory]
-        [InlineData(typeof(MoveDown), 0, 0, 0, 2)]
-        [InlineData(typeof(MoveLeft), 2, 0, 0, 0)]
-        [InlineData(typeof(MoveRight), 0, 0, 2, 0)]
-        [InlineData(typeof(MoveUp), 0, 2, 0, 0)]
-        public void SkipNextCellInCorrectDIrection(Type currentDirectionType, int oldX, int oldY, int newX, int newY) {
+        [InlineData(0, 0, 2, 0)]
+        public void SkipNextCellWhenDirectionIsMoveRight(int oldX, int oldY, int newX, int newY) {
             // Arrange
-            Direction currentDirection = (Direction)Activator.CreateInstance(currentDirectionType);
             _runtime.SetupProperty(r => r.CurrentPosition, new CoOrds(oldX, oldY));
-            _runtime.SetupProperty(r => r.CurrentDirection, currentDirection);
+            _runtime.SetupProperty(r => r.CurrentDirection, MoveRight.Instance);
+
+            // Act
+            _sit.Execute(_runtime.Object);
+
+            // Assert
+            _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(newX, newY));   
+        }
+
+        [Theory]
+        [InlineData(2, 0, 0, 0)]
+        public void SkipNextCellWhenDirectionIsMoveLeft(int oldX, int oldY, int newX, int newY) {
+            // Arrange
+            _runtime.SetupProperty(r => r.CurrentPosition, new CoOrds(oldX, oldY));
+            _runtime.SetupProperty(r => r.CurrentDirection, MoveLeft.Instance);
+
+            // Act
+            _sit.Execute(_runtime.Object);
+
+            // Assert
+            _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(newX, newY));   
+        }
+
+        [Theory]
+        [InlineData(0, 0, 0, 2)]
+        public void SkipNextCellWhenDirectionIsMoveDown(int oldX, int oldY, int newX, int newY) {
+            // Arrange
+            _runtime.SetupProperty(r => r.CurrentPosition, new CoOrds(oldX, oldY));
+            _runtime.SetupProperty(r => r.CurrentDirection, MoveDown.Instance);
+
+            // Act
+            _sit.Execute(_runtime.Object);
+
+            // Assert
+            _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(newX, newY));   
+        }
+
+        [Theory]
+        [InlineData(0, 2, 0, 0)]
+        public void SkipNextCellWhenDirectionIsMoveUp(int oldX, int oldY, int newX, int newY) {
+            // Arrange
+            _runtime.SetupProperty(r => r.CurrentPosition, new CoOrds(oldX, oldY));
+            _runtime.SetupProperty(r => r.CurrentDirection, MoveUp.Instance);
 
             // Act
             _sit.Execute(_runtime.Object);

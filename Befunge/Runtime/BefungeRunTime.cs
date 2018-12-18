@@ -61,7 +61,7 @@ namespace Befunge.Runtime {
             CurrentMode = mode;
 
             ReadInstruction();   
-            CurrentDirection = new MoveRight(); 
+            CurrentDirection = MoveRight.Instance; 
             EndProgram = false;     
         }
 

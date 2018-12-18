@@ -49,10 +49,10 @@ namespace Befunge.Mode {
             _instructionsLookup.Add('!', new LogicalNot());
             _instructionsLookup.Add('`', new GreaterThan());
             _instructionsLookup.Add('.', new OutputNumber());
-            _instructionsLookup.Add('>', new MoveRight());
-            _instructionsLookup.Add('<', new MoveLeft());
-            _instructionsLookup.Add('^', new MoveUp());
-            _instructionsLookup.Add('v', new MoveDown());
+            _instructionsLookup.Add('>', MoveRight.Instance);
+            _instructionsLookup.Add('<', MoveLeft.Instance);
+            _instructionsLookup.Add('^', MoveUp.Instance);
+            _instructionsLookup.Add('v', MoveDown.Instance);
             _instructionsLookup.Add(' ', new Ignore());
             _instructionsLookup.Add(':', new Duplicate());
             _instructionsLookup.Add('_', new BranchLeftOrRight());

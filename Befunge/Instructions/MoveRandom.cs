@@ -4,7 +4,7 @@ using Befunge.Runtime;
 namespace Befunge.Instructions {
     public class MoveRandom : Instruction, IInstruction {
         public override void Execute(IBefungeRunTime befungeRunTime) {
-            Direction[] directions = { new MoveDown(), new MoveLeft(), new MoveRight(), new MoveUp() };
+            Direction[] directions = { MoveDown.Instance, MoveLeft.Instance, MoveRight.Instance, MoveUp.Instance };
             int randomIndex = (new Random()).Next(directions.Length);
             
             befungeRunTime.CurrentDirection = directions[randomIndex];

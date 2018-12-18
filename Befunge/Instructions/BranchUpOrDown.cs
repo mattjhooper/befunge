@@ -6,8 +6,8 @@ namespace Befunge.Instructions {
         public override void Execute(IBefungeRunTime befungeRunTime) {
             int val = befungeRunTime.RetrieveLastValue();
 
-            Direction moveDown = new MoveDown();
-            Direction moveUp = new MoveUp();
+            Direction moveDown = MoveDown.Instance;
+            Direction moveUp = MoveUp.Instance;
                         
             befungeRunTime.CurrentDirection = val == 0 ? moveDown : moveUp;
 
