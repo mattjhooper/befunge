@@ -54,11 +54,11 @@ namespace Befunge.Runtime {
         #endregion
 
         #region constructors
-        public BefungeRunTime(string befungeCode) {
+        public BefungeRunTime(string befungeCode, IMode mode) {
             _befungeGrid = befungeCode.Split("\n");
             _intStack = new Stack<int>();
             CurrentPosition = new CoOrds(0,0);  
-            CurrentMode = new NumberMode();
+            CurrentMode = mode;
 
             ReadInstruction();   
             CurrentDirection = new MoveRight(); 
