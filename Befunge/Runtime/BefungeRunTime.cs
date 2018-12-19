@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using Befunge.Instructions;
@@ -10,9 +11,11 @@ namespace Befunge.Runtime {
         #region fields      
         private readonly string[] _befungeGrid;
         private char _currentInstruction;
-        private Stack<int> _intStack;
+        private readonly Stack<int> _intStack;
 
         private StringBuilder _output = new StringBuilder();
+
+        private readonly TextWriter _outputStream;
 
         #endregion
 
@@ -47,6 +50,8 @@ namespace Befunge.Runtime {
           }
           set 
           {
+              _outputStream.Write(value);
+              _outputStream.Flush();
               _output.Append(value);
           }
         }
@@ -54,7 +59,7 @@ namespace Befunge.Runtime {
         #endregion
 
         #region constructors
-        public BefungeRunTime(string befungeCode, IMode mode) {
+        public BefungeRunTime(string befungeCode, IMode mode, TextWriter outputStream = null) {
             _befungeGrid = befungeCode.Split("\n");
             _intStack = new Stack<int>();
             CurrentPosition = new CoOrds(0,0);  
@@ -62,7 +67,8 @@ namespace Befunge.Runtime {
 
             ReadInstruction();   
             CurrentDirection = MoveRight.Instance; 
-            EndProgram = false;     
+            EndProgram = false;   
+            _outputStream = outputStream == null ? Console.Out : outputStream;            
         }
 
         #endregion
