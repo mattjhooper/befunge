@@ -17,7 +17,8 @@ namespace Befunge
 
             using (StreamWriter sw = new StreamWriter("befunge_output.txt"))
             {
-               BefungeInterpreter.Interpret(">987v>.v\nv456<  :\n>321 ^ _@", sw);
+               //BefungeInterpreter.Interpret(">987v>.v\nv456<  :\n>321 ^ _@", sw);
+               BefungeInterpreter.Interpret("v\n> ^@");
             }
         }
     }
