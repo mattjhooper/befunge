@@ -54,15 +54,9 @@ namespace Befunge.UnitTests.Runtime
 
         [Fact]
         public void HaveCorrectMaxExtent() {
-            var defaultExtent = _runtime.MaxExtent;
-
-            // Act
-            _runtime.CurrentPosition = new CoOrds(0,2);
             
             // Assert
-            Assert.Equal(new CoOrds(7,2), defaultExtent);
             Assert.Equal(new CoOrds(8,2), _runtime.MaxExtent);
-
 
         }
 
@@ -111,7 +105,8 @@ namespace Befunge.UnitTests.Runtime
 
         [Fact]
         public void PutAndGetCorrectValue() {
-             var putPosition = new CoOrds(1,1);
+            // Arrange
+            var putPosition = new CoOrds(1,1);
 
             // Act
             _runtime.PutValue(putPosition, 'X');
@@ -121,5 +116,72 @@ namespace Befunge.UnitTests.Runtime
             Assert.Equal('X', _runtime.GetValue(putPosition));
         }
 
+        [Fact]
+        public void AlwaysHaveConsistentExtents() {
+            // Arrange
+            var defaultExtent = _runtime.MaxExtent;
+
+            CoOrds position;
+            position.x = 0;
+
+            for (position.y = 1; position.y <= defaultExtent.y; position.y++) 
+            {
+                // Act
+                _runtime.CurrentPosition = position; 
+                Assert.Equal(_runtime.MaxExtent, defaultExtent);    
+            }            
+        }
+
+        [Theory]
+        [InlineData(-1, 0)]
+        [InlineData(0, -1)]
+        [InlineData(0, 100)]
+        [InlineData(100, 0)]
+        public void RaiseInvalidOperationExceptionForBadPosition(int x, int y) {
+            // Arrange
+            CoOrds testPosition = new CoOrds(x, y);
+            
+            // Assert
+            var ex = Assert.Throws<InvalidOperationException>(() => _runtime.CurrentPosition = testPosition);
+            Assert.Equal(ex.Message, $"Invalid Position specified: [{x},{y}].");
+        }
+
+        [Theory]
+        [InlineData(-1, 0)]
+        [InlineData(0, -1)]
+        [InlineData(0, 100)]
+        [InlineData(100, 0)]
+        public void RaiseInvalidOperationExceptionForBadPutValuePosition(int x, int y) {
+            // Arrange
+            CoOrds testPosition = new CoOrds(x, y);
+            
+            // Assert
+            var ex = Assert.Throws<InvalidOperationException>(() => _runtime.PutValue(testPosition, 'X'));
+            Assert.Equal(ex.Message, $"Invalid Position specified: [{x},{y}].");
+        }
+
+        [Theory]
+        [InlineData(-1, 0)]
+        [InlineData(0, -1)]
+        [InlineData(0, 100)]
+        [InlineData(100, 0)]
+        public void RaiseInvalidOperationExceptionForBadGetValuePosition(int x, int y) {
+            // Arrange
+            CoOrds testPosition = new CoOrds(x, y);
+            
+            // Assert
+            var ex = Assert.Throws<InvalidOperationException>(() => _runtime.GetValue(testPosition));
+            Assert.Equal(ex.Message, $"Invalid Position specified: [{x},{y}].");
+        }
+
+        [Fact]
+        public void ThrowExceptionIfRetrieveLastValueIsCalledWhenStackIsEmpty() {
+            
+            // Assert
+            Assert.Equal(1, _runtime.RetrieveLastValueOrDefault(1));
+            var ex = Assert.Throws<InvalidOperationException>(() => _runtime.RetrieveLastValue());
+            Assert.Equal($"Invalid Operation at position [{_runtime.CurrentPosition.x},{_runtime.CurrentPosition.y}]. Cannot retrieve a value when the stack is empty.", ex.Message);
+
+        }
     }
 }    
