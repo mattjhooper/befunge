@@ -173,5 +173,15 @@ namespace Befunge.UnitTests.Runtime
             var ex = Assert.Throws<InvalidOperationException>(() => _runtime.GetValue(testPosition));
             Assert.Equal(ex.Message, $"Invalid Position specified: [{x},{y}].");
         }
+
+        [Fact]
+        public void ThrowExceptionIfRetrieveLastValueIsCalledWhenStackIsEmpty() {
+            
+            // Assert
+            Assert.Equal(1, _runtime.RetrieveLastValueOrDefault(1));
+            var ex = Assert.Throws<InvalidOperationException>(() => _runtime.RetrieveLastValue());
+            Assert.Equal($"Invalid Operation at position [{_runtime.CurrentPosition.x},{_runtime.CurrentPosition.y}]. Cannot retrieve a value when the stack is empty.", ex.Message);
+
+        }
     }
 }    

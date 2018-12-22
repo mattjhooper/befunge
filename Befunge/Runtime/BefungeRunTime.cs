@@ -88,7 +88,7 @@ namespace Befunge.Runtime {
 
         #region methods
 
-        public bool CheckPosition(CoOrds checkPosition) {
+        private bool CheckPosition(CoOrds checkPosition) {
             bool isValid = (0 <= checkPosition.x && checkPosition.x <= MaxExtent.x && 0 <= checkPosition.y && checkPosition.y <= MaxExtent.y);
 
             if (!isValid) {
@@ -137,6 +137,11 @@ namespace Befunge.Runtime {
         }
 
         public int RetrieveLastValue() {
+            if (_intStack.Count == 0) 
+            {
+                string message = $"Invalid Operation at position [{CurrentPosition.x},{CurrentPosition.y}]. Cannot retrieve a value when the stack is empty.";
+                throw new InvalidOperationException(message); 
+            }
             return _intStack.Pop();
         }
         public int RetrieveLastValueOrDefault(int defaultValue) {
