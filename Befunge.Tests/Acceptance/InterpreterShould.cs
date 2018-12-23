@@ -77,5 +77,35 @@ namespace Befunge.AcceptanceTests
             Assert.Equal("01->1# +# :# 0# g# ,# :# 5# 8# *# 4# +# -# _@", BefungeInterpreter.Interpret(befungeCode));
 
         }
+
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        [InlineData(5)]
+        [InlineData(6)]
+        [InlineData(7)]
+        [InlineData(8)]
+        [InlineData(9)]
+        public void DetermineOddOrEven(int i)
+        {
+            Assert.Equal((i%2).ToString(), BefungeInterpreter.Interpret(">" + i.ToString() + " 2%v\n  @.1_0.@"));
+        }
+
+        [Theory]
+        [InlineData(1, "t")]
+        [InlineData(2, "t")]
+        [InlineData(3, "f")]
+        [InlineData(4, "t")]
+        [InlineData(5, "f")]
+        [InlineData(6, "f")]
+        [InlineData(7, "f")]
+        [InlineData(8, "t")]
+        [InlineData(9, "f")]
+        public void HandlePowerOf2(int i, string res) 
+        {
+            Assert.Equal(res, BefungeInterpreter.Interpret(">" + i + " : 2v2:    <\n      `      /\n      !      2 \n@,\"t\" _  :2%!|\n             >\"f\",@"));
+        }
      }
 }
