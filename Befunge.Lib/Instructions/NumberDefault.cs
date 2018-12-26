@@ -2,7 +2,13 @@ using System;
 using Befunge.Runtime;
 
 namespace Befunge.Instructions {
+    /// <summary>
+    /// 0-9 - Push this number on the stack
+    /// </summary>
     public class NumberDefault : Instruction, IInstruction {
+        /// <summary>
+        /// Execute the instruction
+        /// </summary>
         public override void Execute(IBefungeRunTime befungeRunTime) {
             int value;
             

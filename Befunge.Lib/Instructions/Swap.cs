@@ -2,7 +2,13 @@ using System;
 using Befunge.Runtime;
 
 namespace Befunge.Instructions {
+    /// <summary>
+    /// Swap two values on top of the stack
+    /// </summary>
     public class Swap : Instruction, IInstruction {
+        /// <summary>
+        /// Execute the instruction
+        /// </summary>
         public override void Execute(IBefungeRunTime befungeRunTime) {
             
             int a = befungeRunTime.RetrieveLastValue();            

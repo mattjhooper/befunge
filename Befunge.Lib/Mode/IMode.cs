@@ -16,7 +16,7 @@ namespace Befunge.Mode {
 
         #region methods
         /// <summary>
-        /// Returns true if this is Number mode and false otherwise
+        /// Execute the current instruction
         /// </summary>
         void ExecuteInstruction(IBefungeRunTime runTime);
 

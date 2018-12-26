@@ -4,6 +4,9 @@ using Befunge.Instructions;
 using Befunge.Runtime;
 
 namespace Befunge.Mode {
+    /// <summary>
+    /// Number Mode.
+    /// </summary>
     public sealed class NumberMode : IMode {
 
         #region lazy_singleton
@@ -19,6 +22,10 @@ namespace Befunge.Mode {
         #endregion
 
         #region properties
+        
+        /// <summary>
+        /// Returns true if this is Number mode and false otherwise
+        /// </summary>
         public bool IsNumberMode { get {return true;} }
 
         #endregion
@@ -32,6 +39,10 @@ namespace Befunge.Mode {
         #endregion
 
         #region methods
+        
+        /// <summary>
+        /// Execute the current instruction
+        /// </summary>
         public void ExecuteInstruction(IBefungeRunTime runTime) {
             IInstruction currentInstruction = _defaultInstruction;
 
@@ -40,6 +51,12 @@ namespace Befunge.Mode {
             currentInstruction.Execute(runTime); 
         }
 
+        /// <summary>
+        /// Return the instance
+        /// </summary>
+        /// <returns>
+        /// Return the singleton instance of NumberMode
+        /// </returns>
         public static NumberMode Instance { get { return _lazyNumberModeSingleton.Value; } }
 
         private void SetupInstructionLookup() {

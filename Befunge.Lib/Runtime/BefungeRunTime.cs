@@ -7,6 +7,9 @@ using Befunge.Instructions;
 using Befunge.Mode;
 
 namespace Befunge.Runtime {
+    /// <summary>
+    /// Class to manage the objects required for the befunge interpreter
+    /// </summary>
     public class BefungeRunTime : IBefungeRunTime {  
 
         #region fields      
@@ -23,7 +26,14 @@ namespace Befunge.Runtime {
         #endregion
 
         #region properties
+        /// <summary>
+        /// Get or Set the current direction
+        /// </summary>
         public Direction CurrentDirection { get; set; }
+        
+        /// <summary>
+        /// Get the current instruction
+        /// </summary>
         public char CurrentInstruction { 
             get
             {
@@ -32,8 +42,14 @@ namespace Befunge.Runtime {
         }
 
 
+        /// <summary>
+        /// Get or Set the current mode (e.g. NumberMode or StringMode)
+        /// </summary>
         public IMode CurrentMode { get; set; }
 
+        /// <summary>
+        /// Get or Set the current position as an X/Y coordinate
+        /// </summary>
         public CoOrds CurrentPosition 
         { get
             {
@@ -46,8 +62,14 @@ namespace Befunge.Runtime {
             } 
         }
 
+        /// <summary>
+        /// Return true if the program is at the end or false otherwise
+        /// </summary>
         public bool EndProgram { get; set; }
 
+        /// <summary>
+        /// Get the Maximum extent of the befunge grid as an x/y coordinate
+        /// </summary>
         public CoOrds MaxExtent 
         { get
             {
@@ -56,6 +78,9 @@ namespace Befunge.Runtime {
               return new CoOrds(x, y);
             }         
         }
+        /// <summary>
+        /// Get or Set the output for the befunge program
+        /// </summary>
         public string Output 
         { get 
           { 
@@ -72,6 +97,12 @@ namespace Befunge.Runtime {
         #endregion
 
         #region constructors
+        /// <summary>
+        /// Create the BefungeRunTime
+        /// </summary>
+        /// <param name="befungeCode">A String containing befunge code.</param>
+        /// <param name="mode">The mode (Number or String).</param>
+        /// <param name="outputStream">An optional TextWriter. It can be used to output to a file.</param>
         public BefungeRunTime(string befungeCode, IMode mode, TextWriter outputStream = null) {
             _befungeGrid = CreateGridFromString(befungeCode);
             _intStack = new Stack<int>();
@@ -112,10 +143,20 @@ namespace Befunge.Runtime {
             return grid;
         }
 
+        /// <summary>
+        /// Execute the current instruction
+        /// </summary>
         public void ExecuteInstruction() {
             CurrentMode.ExecuteInstruction(this);            
         }
 
+        /// <summary>
+        /// Get the character at the specified position
+        /// </summary>
+        /// <returns>
+        /// Returns the character stored at the specified position
+        /// </returns>
+        /// <param name="getPosition">x/y coordinate of the character to retrieve.</param>
         public char GetValue(CoOrds getPosition) {
             char rtn=' ';
             if (CheckPosition(getPosition))
@@ -123,6 +164,11 @@ namespace Befunge.Runtime {
             return rtn;
         }
 
+        /// <summary>
+        /// Store the supplied character at the specified position
+        /// </summary>
+        /// <param name="putPosition">x/y coordinate position to store the supplied character.</param>
+        /// <param name="value">the character to store.</param>
         public void PutValue(CoOrds putPosition, char value) {
             if (CheckPosition(putPosition)) 
             {
@@ -131,11 +177,20 @@ namespace Befunge.Runtime {
                 _befungeGrid[putPosition.y] = new string(yChars);
             }
         }
+        /// <summary>
+        /// Read the current instruction
+        /// </summary>
         public void ReadInstruction() {
             if (CheckPosition(CurrentPosition))
                 _currentInstruction = _befungeGrid[CurrentPosition.y][CurrentPosition.x];
         }
 
+        /// <summary>
+        /// Retrieve the last value stored in memory and return it.
+        /// </summary>
+        /// <returns>
+        /// Returns the last integer value stored on the stack
+        /// </returns>
         public int RetrieveLastValue() {
             if (_intStack.Count == 0) 
             {
@@ -144,17 +199,45 @@ namespace Befunge.Runtime {
             }
             return _intStack.Pop();
         }
+        
+        /// <summary>
+        /// Retrieve the last value stored in memory and return it.
+        /// If no value has been stored, return the supplied default value
+        /// </summary>
+        /// <returns>
+        /// Returns the last integer value stored in memory or a default
+        /// </returns>
+        /// <param name="defaultValue">the default value to return if there is nothing in memory.</param>
         public int RetrieveLastValueOrDefault(int defaultValue) {
             return _intStack.Count == 0 ? defaultValue : _intStack.Pop();
         }
 
+        /// <summary>
+        /// Peek at the last value stored in memory and return it without removing from memory.
+        /// </summary>
+        /// <returns>
+        /// Returns the last integer value stored in memory
+        /// </returns>
         public int ReviewLastValue() {
             return _intStack.Peek();
         }
+        
+        /// <summary>
+        /// Peek at the last value stored in memory and return it without removing from memory.
+        /// If no value has been stored, return the supplied default value
+        /// </summary>
+        /// <returns>
+        /// Returns the last integer value stored in memory
+        /// </returns>
+        /// <param name="defaultValue">the default value to return if the stack is empty.</param>
         public int ReviewLastValueOrDefault(int defaultValue) {
             return _intStack.Count == 0 ? defaultValue : _intStack.Peek();
         }
 
+        /// <summary>
+        /// Store the supplied value in memory
+        /// </summary>
+        /// <param name="value">the default value to return if there is nothing in memory.</param>
         public void StoreValue(int value) {
             _intStack.Push(value);
         }
