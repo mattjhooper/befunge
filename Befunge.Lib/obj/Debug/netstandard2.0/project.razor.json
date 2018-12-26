@@ -1,6 +1,6 @@
 {
-  "ProjectFilePath": "c:\\dev\\befunge\\Befunge.Tests\\Befunge.Tests.csproj",
-  "TargetFramework": "netcoreapp2.1",
+  "ProjectFilePath": "c:\\dev\\befunge\\Befunge.Lib\\Befunge.Lib.csproj",
+  "TargetFramework": "netstandard2.0",
   "TagHelpers": [],
   "Configuration": {
     "ConfigurationName": "UnsupportedRazor",

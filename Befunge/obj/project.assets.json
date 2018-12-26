@@ -207,6 +207,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "Befunge.Lib/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Befunge.Lib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Befunge.Lib.dll": {}
+        }
       }
     }
   },
@@ -673,10 +683,16 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "Befunge.Lib/1.0.0": {
+      "type": "project",
+      "path": "../Befunge.Lib/Befunge.Lib.csproj",
+      "msbuildProject": "../Befunge.Lib/Befunge.Lib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "Befunge.Lib >= 1.0.0",
       "Microsoft.NETCore.App >= 2.1.0"
     ]
   },
@@ -687,9 +703,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\dev\\befunge\\Befunge\\Befunge.csproj",
-      "projectName": "Befunge",
-      "projectPath": "C:\\dev\\befunge\\Befunge\\Befunge.csproj",
+      "projectUniqueName": "C:\\dev\\befunge\\Befunge\\Befunge.Exe.csproj",
+      "projectName": "Befunge.Exe",
+      "projectPath": "C:\\dev\\befunge\\Befunge\\Befunge.Exe.csproj",
       "packagesPath": "C:\\Users\\Matt\\.nuget\\packages\\",
       "outputPath": "C:\\dev\\befunge\\Befunge\\obj\\",
       "projectStyle": "PackageReference",
@@ -709,7 +725,11 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\dev\\befunge\\Befunge.Lib\\Befunge.Lib.csproj": {
+              "projectPath": "C:\\dev\\befunge\\Befunge.Lib\\Befunge.Lib.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

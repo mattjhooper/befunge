@@ -101,7 +101,7 @@ namespace Befunge.Runtime {
 
         private string[] CreateGridFromString(string befungeCode)
         {
-            string[] grid = befungeCode.Split("\n");
+            string[] grid = befungeCode.Split('\n');
             int maxWidth = grid.Aggregate(0, (currMax, next) => next.Length > currMax ? next.Length : currMax);
 
             for(int line = 0; line < grid.Length; line++) 
@@ -113,7 +113,7 @@ namespace Befunge.Runtime {
         }
 
         public void ExecuteInstruction() {
-            CurrentMode.ExecuteInstruction(this, CurrentInstruction);            
+            CurrentMode.ExecuteInstruction(this);            
         }
 
         public char GetValue(CoOrds getPosition) {

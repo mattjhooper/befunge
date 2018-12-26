@@ -30,7 +30,7 @@ namespace Befunge.Mode {
 
         #region methods
 
-        public void ExecuteInstruction(IBefungeRunTime runTime, char instruction) {
+        public void ExecuteInstruction(IBefungeRunTime runTime) {
             IInstruction currentInstruction = runTime.CurrentInstruction == '"' ? _toggleStringMode :  _defaultInstruction;
             currentInstruction.Execute(runTime); 
         }

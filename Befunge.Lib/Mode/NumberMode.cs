@@ -32,8 +32,11 @@ namespace Befunge.Mode {
         #endregion
 
         #region methods
-        public void ExecuteInstruction(IBefungeRunTime runTime, char instruction) {
-            IInstruction currentInstruction = _instructionsLookup.GetValueOrDefault(runTime.CurrentInstruction, _defaultInstruction);
+        public void ExecuteInstruction(IBefungeRunTime runTime) {
+            IInstruction currentInstruction = _defaultInstruction;
+
+            if (_instructionsLookup.ContainsKey(runTime.CurrentInstruction))
+                _instructionsLookup.TryGetValue(runTime.CurrentInstruction, out currentInstruction);
             currentInstruction.Execute(runTime); 
         }
 

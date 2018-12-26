@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v2.1": {
       "Befunge.Tests/1.0.0": {
         "dependencies": {
-          "Befunge": "1.0.0",
+          "Befunge.Lib": "1.0.0",
           "Microsoft.NET.Test.Sdk": "15.8.0",
           "Moq": "4.10.1",
           "xunit": "2.3.1",
@@ -1084,9 +1084,9 @@
           "Microsoft.NET.Test.Sdk": "15.8.0"
         }
       },
-      "Befunge/1.0.0": {
+      "Befunge.Lib/1.0.0": {
         "runtime": {
-          "Befunge.dll": {}
+          "Befunge.Lib.dll": {}
         }
       }
     }
@@ -1650,7 +1650,7 @@
       "path": "xunit.runner.visualstudio/2.3.1",
       "hashPath": "xunit.runner.visualstudio.2.3.1.nupkg.sha512"
     },
-    "Befunge/1.0.0": {
+    "Befunge.Lib/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

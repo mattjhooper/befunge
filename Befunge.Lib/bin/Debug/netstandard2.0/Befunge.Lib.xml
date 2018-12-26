@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Befunge.Lib</name>
+    </assembly>
+    <members>
+        <member name="T:Befunge.BefungeInterpreter">
+            <summary>
+            Main Befunge class.
+            Contains the Interpret method that can be used to interpret Befunge code
+            </summary>
+        </member>
+        <member name="M:Befunge.BefungeInterpreter.Interpret(System.String,System.IO.TextWriter)">
+            <summary>
+            Interprets the supplied befungeCode and returns the output as a string
+            </summary>
+            <returns>
+            Returns the output of the supplied code
+            </returns>
+            <example>
+            <code>
+            string theOutput = BefungeInterpreter.Interpret(">321...@");
+            </code>
+            <code>
+            string theOutput = BefungeInterpreter.Interpret(">321...@", Console.Out);
+            </code>
+            </example>
+            <param name="befungeCode">A String containing befunge code.</param>
+            <param name="outputStream">An optional TextWriter. It can be used to output to a file.</param>
+        </member>
+        <member name="T:Befunge.Mode.IMode">
+            <summary>
+            Mode Interface.
+            </summary>
+        </member>
+        <member name="P:Befunge.Mode.IMode.IsNumberMode">
+            <summary>
+            Returns true if this is Number mode and false otherwise
+            </summary>
+        </member>
+        <member name="M:Befunge.Mode.IMode.ExecuteInstruction(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Returns true if this is Number mode and false otherwise
+            </summary>
+        </member>
+    </members>
+</doc>

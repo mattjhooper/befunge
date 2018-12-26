@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Befunge
+namespace Befunge.Exe
 {
     class Program
     {
