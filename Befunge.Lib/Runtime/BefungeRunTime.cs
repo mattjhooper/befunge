@@ -50,6 +50,7 @@ namespace Befunge.Runtime {
         /// <summary>
         /// Get or Set the current position as an X/Y coordinate
         /// </summary>
+        /// <exception cref="InvalidOperationException">Thrown when an invalid position is specified</exception>
         public CoOrds CurrentPosition 
         { get
             {
@@ -157,6 +158,7 @@ namespace Befunge.Runtime {
         /// Returns the character stored at the specified position
         /// </returns>
         /// <param name="getPosition">x/y coordinate of the character to retrieve.</param>
+        /// <exception cref="InvalidOperationException">Thrown when an invalid position is specified</exception>
         public char GetValue(CoOrds getPosition) {
             char rtn=' ';
             if (CheckPosition(getPosition))
@@ -169,6 +171,7 @@ namespace Befunge.Runtime {
         /// </summary>
         /// <param name="putPosition">x/y coordinate position to store the supplied character.</param>
         /// <param name="value">the character to store.</param>
+        /// <exception cref="InvalidOperationException">Thrown when an invalid position is specified</exception>
         public void PutValue(CoOrds putPosition, char value) {
             if (CheckPosition(putPosition)) 
             {
@@ -180,6 +183,7 @@ namespace Befunge.Runtime {
         /// <summary>
         /// Read the current instruction
         /// </summary>
+        /// <exception cref="InvalidOperationException">Thrown when the current position is not valid</exception>
         public void ReadInstruction() {
             if (CheckPosition(CurrentPosition))
                 _currentInstruction = _befungeGrid[CurrentPosition.y][CurrentPosition.x];
@@ -191,6 +195,7 @@ namespace Befunge.Runtime {
         /// <returns>
         /// Returns the last integer value stored on the stack
         /// </returns>
+        /// <exception cref="InvalidOperationException">Thrown when no value exists in memory</exception>
         public int RetrieveLastValue() {
             if (_intStack.Count == 0) 
             {
@@ -218,7 +223,13 @@ namespace Befunge.Runtime {
         /// <returns>
         /// Returns the last integer value stored in memory
         /// </returns>
+        /// <exception cref="InvalidOperationException">Thrown when no value exists in memory</exception>
         public int ReviewLastValue() {
+            if (_intStack.Count == 0) 
+            {
+                string message = $"Invalid Operation at position [{CurrentPosition.x},{CurrentPosition.y}]. Cannot review a value when the stack is empty.";
+                throw new InvalidOperationException(message); 
+            }
             return _intStack.Peek();
         }
         

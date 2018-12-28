@@ -275,6 +275,7 @@
             <summary>
             Execute the instruction
             </summary>
+            <exception cref="T:UnsupportedInstructionException">Thrown when an unknown instruction is encountered</exception>
         </member>
         <member name="T:Befunge.Instructions.OutputASCII">
             <summary>
@@ -443,6 +444,7 @@
             <summary>
             Get or Set the current position as an X/Y coordinate
             </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown when an invalid position is specified</exception>
         </member>
         <member name="P:Befunge.Runtime.BefungeRunTime.EndProgram">
             <summary>
@@ -480,6 +482,7 @@
             Returns the character stored at the specified position
             </returns>
             <param name="getPosition">x/y coordinate of the character to retrieve.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when an invalid position is specified</exception>
         </member>
         <member name="M:Befunge.Runtime.BefungeRunTime.PutValue(Befunge.Runtime.CoOrds,System.Char)">
             <summary>
@@ -487,11 +490,13 @@
             </summary>
             <param name="putPosition">x/y coordinate position to store the supplied character.</param>
             <param name="value">the character to store.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when an invalid position is specified</exception>
         </member>
         <member name="M:Befunge.Runtime.BefungeRunTime.ReadInstruction">
             <summary>
             Read the current instruction
             </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown when the current position is not valid</exception>
         </member>
         <member name="M:Befunge.Runtime.BefungeRunTime.RetrieveLastValue">
             <summary>
@@ -500,6 +505,7 @@
             <returns>
             Returns the last integer value stored on the stack
             </returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when no value exists in memory</exception>
         </member>
         <member name="M:Befunge.Runtime.BefungeRunTime.RetrieveLastValueOrDefault(System.Int32)">
             <summary>
@@ -518,6 +524,7 @@
             <returns>
             Returns the last integer value stored in memory
             </returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when no value exists in memory</exception>
         </member>
         <member name="M:Befunge.Runtime.BefungeRunTime.ReviewLastValueOrDefault(System.Int32)">
             <summary>

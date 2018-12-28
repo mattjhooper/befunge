@@ -9,6 +9,7 @@ namespace Befunge.Instructions {
         /// <summary>
         /// Execute the instruction
         /// </summary>
+        /// <exception cref="UnsupportedInstructionException">Thrown when an unknown instruction is encountered</exception>
         public override void Execute(IBefungeRunTime befungeRunTime) {
             int value;
             
