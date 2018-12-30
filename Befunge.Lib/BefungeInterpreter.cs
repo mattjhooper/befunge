@@ -28,10 +28,11 @@ public class BefungeInterpreter {
         /// </example>
         /// <param name="befungeCode">A String containing befunge code.</param>
         /// <param name="outputStream">An optional TextWriter. It can be used to output to a file.</param>
-        public static string Interpret(string befungeCode, TextWriter outputStream = null) {
+        /// <param name="inputStream">An optional TextReader. It can be used to pass input from a file or the console.</param>
+        public static string Interpret(string befungeCode, TextWriter outputStream = null, TextReader inputStream = null) {
 
             IMode mode = NumberMode.Instance;
-            IBefungeRunTime runTime = new BefungeRunTime(befungeCode, mode, outputStream);
+            IBefungeRunTime runTime = new BefungeRunTime(befungeCode, mode, outputStream, inputStream);
             
             while (!runTime.EndProgram) {
                 runTime.ExecuteInstruction();

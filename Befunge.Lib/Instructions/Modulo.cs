@@ -4,6 +4,7 @@ using Befunge.Runtime;
 namespace Befunge.Instructions {
     /// <summary>
     /// Modulo: Pop a and b, then push the remainder of the integer division of b/a.
+    /// If a is zero, push zero.
     /// </summary>
     public class Modulo : Instruction, IInstruction {
         /// <summary>

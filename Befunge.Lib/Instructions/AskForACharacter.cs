@@ -3,18 +3,15 @@ using Befunge.Runtime;
 
 namespace Befunge.Instructions {
     /// <summary>
-    /// Duplicate value on top of the stack. If there is nothing on top of the stack, push a 0
+    /// Ask user for a character and push its ASCII value
     /// </summary>
-    public class Duplicate : Instruction, IInstruction {
+    public class AskForACharacter : Instruction, IInstruction {
         /// <summary>
         /// Execute the instruction
         /// </summary>
         public override void Execute(IBefungeRunTime befungeRunTime) {
-            
-            int val = befungeRunTime.ReviewLastValueOrDefault(0);            
-
-            befungeRunTime.StoreValue(val);
-            
+            int value = (int)befungeRunTime.Input("Please supply a Character:");            
+            befungeRunTime.StoreValue(value);
             base.Execute(befungeRunTime);
         }
     }

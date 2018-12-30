@@ -86,6 +86,8 @@ namespace Befunge.Mode {
             _instructionsLookup.Add('#', new Trampoline());
             _instructionsLookup.Add('g', new Get());
             _instructionsLookup.Add('p', new Put());
+            _instructionsLookup.Add('&', new AskForANumber());
+            _instructionsLookup.Add('~', new AskForACharacter());
         }
 
         #endregion       

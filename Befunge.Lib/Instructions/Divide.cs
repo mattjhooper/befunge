@@ -4,6 +4,7 @@ using Befunge.Runtime;
 namespace Befunge.Instructions {
     /// <summary>
     /// Integer division: Pop a and b, then push b/a, rounded towards 0.
+    /// If a is zero, push zero.
     /// </summary>
     public class Divide : Instruction, IInstruction {
         /// <summary>

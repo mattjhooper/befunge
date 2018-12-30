@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Befunge.Instructions;
 using Befunge.Mode;
 
+
 namespace Befunge.Runtime {
     /// <summary>
     /// Class to manage the objects required for the befunge interpreter
@@ -17,6 +18,8 @@ namespace Befunge.Runtime {
         private char _currentInstruction;
 
         private CoOrds _currentPosition;
+
+        private readonly TextReader _inputStream;
         private readonly Stack<int> _intStack;
 
         private StringBuilder _output = new StringBuilder();
@@ -104,7 +107,8 @@ namespace Befunge.Runtime {
         /// <param name="befungeCode">A String containing befunge code.</param>
         /// <param name="mode">The mode (Number or String).</param>
         /// <param name="outputStream">An optional TextWriter. It can be used to output to a file.</param>
-        public BefungeRunTime(string befungeCode, IMode mode, TextWriter outputStream = null) {
+        /// <param name="inputStream">An optional TextReader. It can be used to pass input from a file or the console.</param>
+        public BefungeRunTime(string befungeCode, IMode mode, TextWriter outputStream = null, TextReader inputStream = null) {
             _befungeGrid = CreateGridFromString(befungeCode);
             _intStack = new Stack<int>();
             CurrentPosition = new CoOrds(0,0);  
@@ -113,7 +117,8 @@ namespace Befunge.Runtime {
             ReadInstruction();   
             CurrentDirection = MoveRight.Instance; 
             EndProgram = false;   
-            _outputStream = outputStream == null ? Console.Out : outputStream;            
+            _outputStream = outputStream == null ? Console.Out : outputStream; 
+            _inputStream = inputStream == null ? Console.In : inputStream;           
         }
 
         #endregion
@@ -164,6 +169,20 @@ namespace Befunge.Runtime {
             if (CheckPosition(getPosition))
                 rtn = _befungeGrid[getPosition.y][getPosition.x];
             return rtn;
+        }
+
+        /// <summary>
+        /// Ask the user for a character (using the supplied prompt and return it)
+        /// </summary>
+        /// <returns>
+        /// Returns the character entered by the user
+        /// </returns>
+        /// <param name="prompt">a prompt to display to the user to request the input.</param>
+        public char Input(String prompt)
+        {
+            _outputStream.Write(prompt);
+            string input = _inputStream.ReadLine();
+            return input[0];
         }
 
         /// <summary>

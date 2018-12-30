@@ -20,7 +20,8 @@ namespace Befunge.Exe
                //BefungeInterpreter.Interpret(">.@");
                //BefungeInterpreter.Interpret("v\n> ^@");
                //BefungeInterpreter.Interpret(">7 : 1v1:<\n      `  .\n      !  :\n    @._2/^ ");
-               BefungeInterpreter.Interpret(">9 : 2v2:    <\n      `      .\n      !      :\n@,\"t\"._2/:2%!|\n             >\"f\",@");
+               //BefungeInterpreter.Interpret(">9 : 2v2:    <\n      `      .\n      !      :\n@,\"t\"._2/:2%!|\n             >\"f\",@");
+               BefungeInterpreter.Interpret("&~,.@");
             }
         }
     }
