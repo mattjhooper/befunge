@@ -1724,17 +1724,14 @@
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
         }
       },
-      "Befunge/1.0.0": {
+      "Befunge.Lib/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v2.1",
-        "dependencies": {
-          "Microsoft.NETCore.App": "2.1.0"
-        },
+        "framework": ".NETStandard,Version=v2.0",
         "compile": {
-          "bin/placeholder/Befunge.dll": {}
+          "bin/placeholder/Befunge.Lib.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Befunge.dll": {}
+          "bin/placeholder/Befunge.Lib.dll": {}
         }
       }
     }
@@ -5999,15 +5996,15 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "Befunge/1.0.0": {
+    "Befunge.Lib/1.0.0": {
       "type": "project",
-      "path": "../Befunge/Befunge.csproj",
-      "msbuildProject": "../Befunge/Befunge.csproj"
+      "path": "../Befunge.Lib/Befunge.Lib.csproj",
+      "msbuildProject": "../Befunge.Lib/Befunge.Lib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "Befunge >= 1.0.0",
+      "Befunge.Lib >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 15.8.0",
       "Microsoft.NETCore.App >= 2.1.0",
       "Moq >= 4.10.1",
@@ -6045,8 +6042,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\dev\\befunge\\Befunge\\Befunge.csproj": {
-              "projectPath": "C:\\dev\\befunge\\Befunge\\Befunge.csproj"
+            "C:\\dev\\befunge\\Befunge.Lib\\Befunge.Lib.csproj": {
+              "projectPath": "C:\\dev\\befunge\\Befunge.Lib\\Befunge.Lib.csproj"
             }
           }
         }

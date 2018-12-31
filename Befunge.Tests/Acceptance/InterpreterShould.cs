@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Text;
 using Xunit;
 using Befunge;
 
@@ -106,6 +108,19 @@ namespace Befunge.AcceptanceTests
         public void HandlePowerOf2(int i, string res) 
         {
             Assert.Equal(res, BefungeInterpreter.Interpret(">" + i + " : 2v2:    <\n      `      /\n      !      2 \n@,\"t\" _  :2%!|\n             >\"f\",@"));
+        }
+
+        [Fact]
+        public void HandleInputsAndOutputs()
+        {
+            StringBuilder stringToRead = new StringBuilder();
+            stringToRead.AppendLine("1");
+            stringToRead.AppendLine("a");
+
+            using (StringReader reader = new StringReader(stringToRead.ToString()))
+            {
+                Assert.Equal("a1", BefungeInterpreter.Interpret("&~,.@",null,reader));
+            }
         }
      }
 }

@@ -1,8 +1,10 @@
 using System;
+using System.IO;
 using Xunit;
 using Befunge.Instructions;
 using Befunge.Mode;
 using Befunge.Runtime;
+using Moq;
 
 namespace Befunge.UnitTests.Runtime
 {
@@ -11,9 +13,15 @@ namespace Befunge.UnitTests.Runtime
         private static readonly string _befungeCode = ">987v>.v\nv456<  :\n>321 ^ _@";
         private readonly BefungeRunTime _runtime;
 
+        private readonly Mock<TextReader> _textReaderMock;
+        private readonly Mock<TextWriter> _textWriterMock;
+
         public BefungeRuntime_Should() {
             
-            _runtime = new BefungeRunTime(_befungeCode, NumberMode.Instance);
+            
+            _textReaderMock = new Mock<TextReader>();
+            _textWriterMock = new Mock<TextWriter>();
+            _runtime = new BefungeRunTime(_befungeCode, NumberMode.Instance, _textWriterMock.Object, _textReaderMock.Object);
         }
 
         [Fact]
@@ -182,6 +190,40 @@ namespace Befunge.UnitTests.Runtime
             var ex = Assert.Throws<InvalidOperationException>(() => _runtime.RetrieveLastValue());
             Assert.Equal($"Invalid Operation at position [{_runtime.CurrentPosition.x},{_runtime.CurrentPosition.y}]. Cannot retrieve a value when the stack is empty.", ex.Message);
 
+        }
+
+        [Fact]
+        public void ThrowExceptionIfReviewLastValueIsCalledWhenStackIsEmpty() {
+            
+            // Assert
+            Assert.Equal(1, _runtime.ReviewLastValueOrDefault(1));
+            var ex = Assert.Throws<InvalidOperationException>(() => _runtime.ReviewLastValue());
+            Assert.Equal($"Invalid Operation at position [{_runtime.CurrentPosition.x},{_runtime.CurrentPosition.y}]. Cannot review a value when the stack is empty.", ex.Message);
+
+        }
+
+        [Fact]
+        public void OutputPromptAndReturnInput() {
+            // Arrange
+            string prompt = "Please provide a number.";
+            _textReaderMock.Setup(r => r.ReadLine()).Returns("1");
+
+            Assert.Equal("1", _runtime.Input(prompt));
+            _textWriterMock.Verify(m => m.Write(It.Is<string>(s => s==prompt)), Times.Exactly(1));
+        }
+
+        [Fact]
+        public void HandleEmptyReads() {
+            // Arrange
+            string prompt = "Please provide a number.";
+            _textReaderMock.Setup(r => r.ReadLine()).Returns("");
+
+            // Act
+            _runtime.Input(prompt);
+            
+            // Assert
+            //Assert.Equal('', _runtime.Input(prompt));
+            _textWriterMock.Verify(m => m.Write(It.Is<string>(s => s==prompt)), Times.Exactly(1));
         }
     }
 }    
