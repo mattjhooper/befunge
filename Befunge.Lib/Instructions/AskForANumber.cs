@@ -11,9 +11,9 @@ namespace Befunge.Instructions {
         /// </summary>
         public override void Execute(IBefungeRunTime befungeRunTime) {
             int value;
-            char input=' ';
+            string input = "";
             
-            while (!Int32.TryParse(input.ToString(), out value))
+            while (!Int32.TryParse(input, out value))
             {
                 input = befungeRunTime.Input("Please supply an Integer:");                    
             }

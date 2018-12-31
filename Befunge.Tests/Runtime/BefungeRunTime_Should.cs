@@ -208,7 +208,21 @@ namespace Befunge.UnitTests.Runtime
             string prompt = "Please provide a number.";
             _textReaderMock.Setup(r => r.ReadLine()).Returns("1");
 
-            Assert.Equal('1', _runtime.Input(prompt));
+            Assert.Equal("1", _runtime.Input(prompt));
+            _textWriterMock.Verify(m => m.Write(It.Is<string>(s => s==prompt)), Times.Exactly(1));
+        }
+
+        [Fact]
+        public void HandleEmptyReads() {
+            // Arrange
+            string prompt = "Please provide a number.";
+            _textReaderMock.Setup(r => r.ReadLine()).Returns("");
+
+            // Act
+            _runtime.Input(prompt);
+            
+            // Assert
+            //Assert.Equal('', _runtime.Input(prompt));
             _textWriterMock.Verify(m => m.Write(It.Is<string>(s => s==prompt)), Times.Exactly(1));
         }
     }

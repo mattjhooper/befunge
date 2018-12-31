@@ -63,13 +63,13 @@ namespace Befunge.Runtime {
         char GetValue(CoOrds getPosition);
 
         /// <summary>
-        /// Ask the user for a character (using the supplied prompt and return it)
+        /// Ask the user for input (using the supplied prompt and return it)
         /// </summary>
         /// <returns>
-        /// Returns the character entered by the user
+        /// Returns the input string entered by the user
         /// </returns>
         /// <param name="prompt">a prompt to display to the user to request the input.</param>
-        char Input(String prompt);
+        string Input(String prompt);
 
         /// <summary>
         /// Store the supplied character at the specified position

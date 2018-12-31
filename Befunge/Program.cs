@@ -20,8 +20,12 @@ namespace Befunge.Exe
                //BefungeInterpreter.Interpret(">.@");
                //BefungeInterpreter.Interpret("v\n> ^@");
                //BefungeInterpreter.Interpret(">7 : 1v1:<\n      `  .\n      !  :\n    @._2/^ ");
-               //BefungeInterpreter.Interpret(">9 : 2v2:    <\n      `      .\n      !      :\n@,\"t\"._2/:2%!|\n             >\"f\",@");
-               BefungeInterpreter.Interpret("&~,.@");
+               
+               // Power Of 2
+               BefungeInterpreter.Interpret(">& : 2v2:    <\n      `      /\n      !      2 \n@,\"t\" _  :2%!|\n             >\"f\",@");
+               
+               // Ask for an integer and character
+               //BefungeInterpreter.Interpret("&~,.@");
             }
         }
     }

@@ -19,7 +19,7 @@ namespace Befunge.UnitTests.Instructions
         [Fact]
         public void PushCorrectResult() {
             // Arrange
-            _runtime.Setup(r => r.Input(It.IsAny<string>())).Returns('a');
+            _runtime.Setup(r => r.Input(It.IsAny<string>())).Returns("a");
 
             // Act
             _sit.Execute(_runtime.Object);

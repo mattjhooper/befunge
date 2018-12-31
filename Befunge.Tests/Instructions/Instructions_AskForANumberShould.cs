@@ -19,7 +19,7 @@ namespace Befunge.UnitTests.Instructions
         [Fact]
         public void PushCorrectResult() {
             // Arrange
-            _runtime.Setup(r => r.Input(It.IsAny<string>())).Returns('1');
+            _runtime.Setup(r => r.Input(It.IsAny<string>())).Returns("1");
 
             // Act
             _sit.Execute(_runtime.Object);
@@ -33,7 +33,7 @@ namespace Befunge.UnitTests.Instructions
         [Fact]
         public void KeepTryingUntilANumberIsReturned() {
             // Arrange
-            _runtime.SetupSequence(r => r.Input(It.IsAny<string>())).Returns('A').Returns('B').Returns('1');
+            _runtime.SetupSequence(r => r.Input(It.IsAny<string>())).Returns("A").Returns("B").Returns("1");
 
             // Act
             _sit.Execute(_runtime.Object);

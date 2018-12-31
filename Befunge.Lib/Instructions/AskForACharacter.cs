@@ -10,8 +10,16 @@ namespace Befunge.Instructions {
         /// Execute the instruction
         /// </summary>
         public override void Execute(IBefungeRunTime befungeRunTime) {
-            int value = (int)befungeRunTime.Input("Please supply a Character:");            
-            befungeRunTime.StoreValue(value);
+            string input = "";
+
+            while (input.Length == 0)
+            {
+               input = befungeRunTime.Input("Please supply a Character:"); 
+            }
+            
+            // take the first character and get the ASCII value
+            int ASCIIvalue = (int)input[0];            
+            befungeRunTime.StoreValue(ASCIIvalue);
             base.Execute(befungeRunTime);
         }
     }

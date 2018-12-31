@@ -172,17 +172,16 @@ namespace Befunge.Runtime {
         }
 
         /// <summary>
-        /// Ask the user for a character (using the supplied prompt and return it)
+        /// Ask the user for input (using the supplied prompt and return it)
         /// </summary>
         /// <returns>
-        /// Returns the character entered by the user
+        /// Returns the input string entered by the user
         /// </returns>
         /// <param name="prompt">a prompt to display to the user to request the input.</param>
-        public char Input(String prompt)
+        public string Input(String prompt)
         {
             _outputStream.Write(prompt);
-            string input = _inputStream.ReadLine();
-            return input[0];
+            return _inputStream.ReadLine();            
         }
 
         /// <summary>
