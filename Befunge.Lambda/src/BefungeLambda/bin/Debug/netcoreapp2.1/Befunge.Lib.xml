@@ -1,0 +1,752 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Befunge.Lib</name>
+    </assembly>
+    <members>
+        <member name="T:Befunge.BefungeInterpreter">
+            <summary>
+            Main Befunge class.
+            Contains the Interpret method that can be used to interpret Befunge code
+            </summary>
+        </member>
+        <member name="M:Befunge.BefungeInterpreter.Interpret(System.String,System.IO.TextWriter,System.IO.TextReader)">
+            <summary>
+            Interprets the supplied befungeCode and returns the output as a string
+            </summary>
+            <returns>
+            Returns the output of the supplied code
+            </returns>
+            <example>
+            <code>
+            string theOutput = BefungeInterpreter.Interpret(">321...@");
+            </code>
+            <code>
+            string theOutput = BefungeInterpreter.Interpret(">321...@", Console.Out);
+            </code>
+            </example>
+            <param name="befungeCode">A String containing befunge code.</param>
+            <param name="outputStream">An optional TextWriter. It can be used to output to a file.</param>
+            <param name="inputStream">An optional TextReader. It can be used to pass input from a file or the console.</param>
+        </member>
+        <member name="T:Befunge.Instructions.Add">
+            <summary>
+            Addition: Pop a and b, then push a+b
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.Add.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.AskForACharacter">
+            <summary>
+            Ask user for a character and push its ASCII value
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.AskForACharacter.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.AskForANumber">
+            <summary>
+            Ask user for a number and push it
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.AskForANumber.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.BranchLeftOrRight">
+            <summary>
+            Pop a value; move right if value=0, left otherwise
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.BranchLeftOrRight.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.BranchUpOrDown">
+            <summary>
+            Pop a value; move down if value=0, up otherwise
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.BranchUpOrDown.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.Direction">
+            <summary>
+            Base for any direction classes
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.Direction.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.Discard">
+            <summary>
+            Pop value from the stack and discard it
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.Discard.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.Divide">
+            <summary>
+            Integer division: Pop a and b, then push b/a, rounded towards 0.
+            If a is zero, push zero.
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.Divide.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.Duplicate">
+            <summary>
+            Duplicate value on top of the stack. If there is nothing on top of the stack, push a 0
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.Duplicate.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.EndProgram">
+            <summary>
+            End program
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.EndProgram.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.Get">
+            <summary>
+            A "get" call (a way to retrieve data in storage). 
+            Pop y and x, then push ASCII value of the character at that position in the program
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.Get.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.GreaterThan">
+            <summary>
+            Greater than: Pop a and b, then push 1 if b>a, otherwise zero.
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.GreaterThan.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.Ignore">
+            <summary>
+            Do nothing
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.IInstruction">
+            <summary>
+            The Instruction interface
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.IInstruction.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.Instruction">
+            <summary>
+            Base for any instruction classes
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.Instruction.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.LogicalNot">
+            <summary>
+            Logical NOT: Pop a value. If the value is zero, push 1; otherwise, push zero.
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.LogicalNot.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.Modulo">
+            <summary>
+            Modulo: Pop a and b, then push the remainder of the integer division of b/a.
+            If a is zero, push zero.
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.Modulo.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.MoveDown">
+            <summary>
+            Start moving down
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.MoveDown.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="P:Befunge.Instructions.MoveDown.Instance">
+            <summary>
+            Return the instance
+            </summary>
+            <returns>
+            Return the singleton instance of MoveDown
+            </returns>
+        </member>
+        <member name="T:Befunge.Instructions.MoveLeft">
+            <summary>
+            Start moving left
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.MoveLeft.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="P:Befunge.Instructions.MoveLeft.Instance">
+            <summary>
+            Return the instance
+            </summary>
+            <returns>
+            Return the singleton instance of MoveLeft
+            </returns>
+        </member>
+        <member name="T:Befunge.Instructions.MoveRandom">
+            <summary>
+            Start moving in a random cardinal direction
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.MoveRandom.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.MoveRight">
+            <summary>
+            Start moving right
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.MoveRight.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="P:Befunge.Instructions.MoveRight.Instance">
+            <summary>
+            Return the instance
+            </summary>
+            <returns>
+            Return the singleton instance of MoveRight
+            </returns>
+        </member>
+        <member name="T:Befunge.Instructions.MoveUp">
+            <summary>
+            Start moving right
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.MoveUp.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="P:Befunge.Instructions.MoveUp.Instance">
+            <summary>
+            Return the instance
+            </summary>
+            <returns>
+            Return the singleton instance of MoveUp
+            </returns>
+        </member>
+        <member name="T:Befunge.Instructions.Multiply">
+            <summary>
+            Multiplication: Pop a and b, then push a*b
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.Multiply.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.NumberDefault">
+            <summary>
+            0-9 - Push this number on the stack
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.NumberDefault.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+            <exception cref="T:UnsupportedInstructionException">Thrown when an unknown instruction is encountered</exception>
+        </member>
+        <member name="T:Befunge.Instructions.OutputASCII">
+            <summary>
+            Pop value and output as ASCII character
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.OutputASCII.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.OutputNumber">
+            <summary>
+            Pop value and output as an integer followed by a space
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.OutputNumber.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.Put">
+            <summary>
+            A "put" call (a way to store a value for later use). 
+            Pop y, x, and v, then change the character at (x,y) 
+            in the program to the character with ASCII value v
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.Put.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.StringDefault">
+            <summary>
+            Push each character's ASCII value on the stack
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.StringDefault.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.Subtract">
+            <summary>
+            Subtraction: Pop a and b, then push b-a
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.Subtract.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.Swap">
+            <summary>
+            Swap two values on top of the stack.
+            If there is only one value, pretend there is an extra 0 on bottom of the stack.
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.Swap.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.ToggleStringMode">
+            <summary>
+            Start string mode: push each character's ASCII value all the way up to the next "
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.ToggleStringMode.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Instructions.Trampoline">
+            <summary>
+            Bridge: Skip next cell
+            </summary>
+        </member>
+        <member name="M:Befunge.Instructions.Trampoline.Execute(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Mode.IMode">
+            <summary>
+            Mode Interface.
+            </summary>
+        </member>
+        <member name="P:Befunge.Mode.IMode.IsNumberMode">
+            <summary>
+            Returns true if this is Number mode and false otherwise
+            </summary>
+        </member>
+        <member name="M:Befunge.Mode.IMode.ExecuteInstruction(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the current instruction
+            </summary>
+        </member>
+        <member name="T:Befunge.Mode.NumberMode">
+            <summary>
+            Number Mode.
+            </summary>
+        </member>
+        <member name="P:Befunge.Mode.NumberMode.IsNumberMode">
+            <summary>
+            Returns true if this is Number mode and false otherwise
+            </summary>
+        </member>
+        <member name="M:Befunge.Mode.NumberMode.ExecuteInstruction(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the current instruction
+            </summary>
+        </member>
+        <member name="P:Befunge.Mode.NumberMode.Instance">
+            <summary>
+            Return the instance
+            </summary>
+            <returns>
+            Return the singleton instance of NumberMode
+            </returns>
+        </member>
+        <member name="T:Befunge.Mode.StringMode">
+            <summary>
+            String mode.
+            </summary>
+        </member>
+        <member name="P:Befunge.Mode.StringMode.IsNumberMode">
+            <summary>
+            Returns true if this is Number mode and false otherwise
+            </summary>
+        </member>
+        <member name="M:Befunge.Mode.StringMode.ExecuteInstruction(Befunge.Runtime.IBefungeRunTime)">
+            <summary>
+            Execute the current instruction
+            </summary>
+        </member>
+        <member name="P:Befunge.Mode.StringMode.Instance">
+            <summary>
+            Return the instance
+            </summary>
+            <returns>
+            Return the singleton instance of StringMode
+            </returns>
+        </member>
+        <member name="T:Befunge.Runtime.BefungeRunTime">
+            <summary>
+            Class to manage the objects required for the befunge interpreter
+            </summary>
+        </member>
+        <member name="P:Befunge.Runtime.BefungeRunTime.CurrentDirection">
+            <summary>
+            Get or Set the current direction
+            </summary>
+        </member>
+        <member name="P:Befunge.Runtime.BefungeRunTime.CurrentInstruction">
+            <summary>
+            Get the current instruction
+            </summary>
+        </member>
+        <member name="P:Befunge.Runtime.BefungeRunTime.CurrentMode">
+            <summary>
+            Get or Set the current mode (e.g. NumberMode or StringMode)
+            </summary>
+        </member>
+        <member name="P:Befunge.Runtime.BefungeRunTime.CurrentPosition">
+            <summary>
+            Get or Set the current position as an X/Y coordinate
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown when an invalid position is specified</exception>
+        </member>
+        <member name="P:Befunge.Runtime.BefungeRunTime.EndProgram">
+            <summary>
+            Return true if the program is at the end or false otherwise
+            </summary>
+        </member>
+        <member name="P:Befunge.Runtime.BefungeRunTime.MaxExtent">
+            <summary>
+            Get the Maximum extent of the befunge grid as an x/y coordinate
+            </summary>
+        </member>
+        <member name="P:Befunge.Runtime.BefungeRunTime.Output">
+            <summary>
+            Get or Set the output for the befunge program
+            </summary>
+        </member>
+        <member name="M:Befunge.Runtime.BefungeRunTime.#ctor(System.String,Befunge.Mode.IMode,System.IO.TextWriter,System.IO.TextReader)">
+            <summary>
+            Create the BefungeRunTime
+            </summary>
+            <param name="befungeCode">A String containing befunge code.</param>
+            <param name="mode">The mode (Number or String).</param>
+            <param name="outputStream">An optional TextWriter. It can be used to output to a file.</param>
+            <param name="inputStream">An optional TextReader. It can be used to pass input from a file or the console.</param>
+        </member>
+        <member name="M:Befunge.Runtime.BefungeRunTime.ExecuteInstruction">
+            <summary>
+            Execute the current instruction
+            </summary>
+        </member>
+        <member name="M:Befunge.Runtime.BefungeRunTime.GetValue(Befunge.Runtime.CoOrds)">
+            <summary>
+            Get the character at the specified position
+            </summary>
+            <returns>
+            Returns the character stored at the specified position
+            </returns>
+            <param name="getPosition">x/y coordinate of the character to retrieve.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when an invalid position is specified</exception>
+        </member>
+        <member name="M:Befunge.Runtime.BefungeRunTime.Input(System.String)">
+            <summary>
+            Ask the user for input (using the supplied prompt and return it)
+            </summary>
+            <returns>
+            Returns the input string entered by the user
+            </returns>
+            <param name="prompt">a prompt to display to the user to request the input.</param>
+        </member>
+        <member name="M:Befunge.Runtime.BefungeRunTime.PutValue(Befunge.Runtime.CoOrds,System.Char)">
+            <summary>
+            Store the supplied character at the specified position
+            </summary>
+            <param name="putPosition">x/y coordinate position to store the supplied character.</param>
+            <param name="value">the character to store.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when an invalid position is specified</exception>
+        </member>
+        <member name="M:Befunge.Runtime.BefungeRunTime.ReadInstruction">
+            <summary>
+            Read the current instruction
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown when the current position is not valid</exception>
+        </member>
+        <member name="M:Befunge.Runtime.BefungeRunTime.RetrieveLastValue">
+            <summary>
+            Retrieve the last value stored in memory and return it.
+            </summary>
+            <returns>
+            Returns the last integer value stored on the stack
+            </returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when no value exists in memory</exception>
+        </member>
+        <member name="M:Befunge.Runtime.BefungeRunTime.RetrieveLastValueOrDefault(System.Int32)">
+            <summary>
+            Retrieve the last value stored in memory and return it.
+            If no value has been stored, return the supplied default value
+            </summary>
+            <returns>
+            Returns the last integer value stored in memory or a default
+            </returns>
+            <param name="defaultValue">the default value to return if there is nothing in memory.</param>
+        </member>
+        <member name="M:Befunge.Runtime.BefungeRunTime.ReviewLastValue">
+            <summary>
+            Peek at the last value stored in memory and return it without removing from memory.
+            </summary>
+            <returns>
+            Returns the last integer value stored in memory
+            </returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when no value exists in memory</exception>
+        </member>
+        <member name="M:Befunge.Runtime.BefungeRunTime.ReviewLastValueOrDefault(System.Int32)">
+            <summary>
+            Peek at the last value stored in memory and return it without removing from memory.
+            If no value has been stored, return the supplied default value
+            </summary>
+            <returns>
+            Returns the last integer value stored in memory
+            </returns>
+            <param name="defaultValue">the default value to return if the stack is empty.</param>
+        </member>
+        <member name="M:Befunge.Runtime.BefungeRunTime.StoreValue(System.Int32)">
+            <summary>
+            Store the supplied value in memory
+            </summary>
+            <param name="value">the default value to return if there is nothing in memory.</param>
+        </member>
+        <member name="T:Befunge.Runtime.CoOrds">
+            <summary>
+            CoOrds.
+            Represents a two dimensional point on an x/y axis.
+            </summary>
+        </member>
+        <member name="F:Befunge.Runtime.CoOrds.x">
+            <summary>
+            x and y coordinates
+            </summary>
+        </member>
+        <member name="F:Befunge.Runtime.CoOrds.y">
+            <summary>
+            x and y coordinates
+            </summary>
+        </member>
+        <member name="M:Befunge.Runtime.CoOrds.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initialise a new x/y CoOrd
+            </summary>
+            <example>
+            <code>
+            CoOrds startPoint = new CoOrds(0, 0);
+            </code>
+            <code>
+            string theOutput = BefungeInterpreter.Interpret(">321...@", Console.Out);
+            </code>
+            </example>
+            <param name="inX">Zero based horizontal position (x).</param>
+            <param name="inY">Zero based vertical position (y).</param>
+        </member>
+        <member name="T:Befunge.Runtime.IBefungeRunTime">
+            <summary>
+            IBefungeRunTime interface.
+            Contains the methods that are needed to run the befunge interpreter
+            </summary>
+        </member>
+        <member name="P:Befunge.Runtime.IBefungeRunTime.CurrentDirection">
+            <summary>
+            Get or Set the current direction
+            </summary>
+        </member>
+        <member name="P:Befunge.Runtime.IBefungeRunTime.CurrentInstruction">
+            <summary>
+            Get the current instruction
+            </summary>
+        </member>
+        <member name="P:Befunge.Runtime.IBefungeRunTime.CurrentMode">
+            <summary>
+            Get or Set the current mode (e.g. NumberMode or StringMode)
+            </summary>
+        </member>
+        <member name="P:Befunge.Runtime.IBefungeRunTime.CurrentPosition">
+            <summary>
+            Get or Set the current position as an X/Y coordinate
+            </summary>
+        </member>
+        <member name="P:Befunge.Runtime.IBefungeRunTime.EndProgram">
+            <summary>
+            Return true if the program is at the end or false otherwise
+            </summary>
+        </member>
+        <member name="P:Befunge.Runtime.IBefungeRunTime.MaxExtent">
+            <summary>
+            Get the Maximum extent of the befunge grid as an x/y coordinate
+            </summary>
+        </member>
+        <member name="P:Befunge.Runtime.IBefungeRunTime.Output">
+            <summary>
+            Get or Set the output for the befunge program
+            </summary>
+        </member>
+        <member name="M:Befunge.Runtime.IBefungeRunTime.ExecuteInstruction">
+            <summary>
+            Execute the current instruction
+            </summary>
+        </member>
+        <member name="M:Befunge.Runtime.IBefungeRunTime.GetValue(Befunge.Runtime.CoOrds)">
+            <summary>
+            Get the character at the specified position
+            </summary>
+            <returns>
+            Returns the character stored at the specified position
+            </returns>
+            <param name="getPosition">x/y coordinate of the character to retrieve.</param>
+        </member>
+        <member name="M:Befunge.Runtime.IBefungeRunTime.Input(System.String)">
+            <summary>
+            Ask the user for input (using the supplied prompt and return it)
+            </summary>
+            <returns>
+            Returns the input string entered by the user
+            </returns>
+            <param name="prompt">a prompt to display to the user to request the input.</param>
+        </member>
+        <member name="M:Befunge.Runtime.IBefungeRunTime.PutValue(Befunge.Runtime.CoOrds,System.Char)">
+            <summary>
+            Store the supplied character at the specified position
+            </summary>
+            <param name="putPosition">x/y coordinate position to store the supplied character.</param>
+            <param name="value">the character to store.</param>
+        </member>
+        <member name="M:Befunge.Runtime.IBefungeRunTime.ReadInstruction">
+            <summary>
+            Read the current instruction
+            </summary>
+        </member>
+        <member name="M:Befunge.Runtime.IBefungeRunTime.RetrieveLastValue">
+            <summary>
+            Retrieve the last value stored in memory and return it.
+            </summary>
+            <returns>
+            Returns the last integer value stored on the stack
+            </returns>
+        </member>
+        <member name="M:Befunge.Runtime.IBefungeRunTime.RetrieveLastValueOrDefault(System.Int32)">
+            <summary>
+            Retrieve the last value stored in memory and return it.
+            If no value has been stored, return the supplied default value
+            </summary>
+            <returns>
+            Returns the last integer value stored in memory or a default
+            </returns>
+            <param name="defaultValue">the default value to return if there is nothing in memory.</param>
+        </member>
+        <member name="M:Befunge.Runtime.IBefungeRunTime.ReviewLastValue">
+            <summary>
+            Peek at the last value stored in memory and return it without removing from memory.
+            </summary>
+            <returns>
+            Returns the last integer value stored in memory
+            </returns>
+        </member>
+        <member name="M:Befunge.Runtime.IBefungeRunTime.ReviewLastValueOrDefault(System.Int32)">
+            <summary>
+            Peek at the last value stored in memory and return it without removing from memory.
+            If no value has been stored, return the supplied default value
+            </summary>
+            <returns>
+            Returns the last integer value stored in memory
+            </returns>
+            <param name="defaultValue">the default value to return if the stack is empty.</param>
+        </member>
+        <member name="M:Befunge.Runtime.IBefungeRunTime.StoreValue(System.Int32)">
+            <summary>
+            Store the supplied value in memory
+            </summary>
+            <param name="value">the default value to return if there is nothing in memory.</param>
+        </member>
+        <member name="T:UnsupportedInstructionException">
+            <summary>
+            UnsupportedInstructionException: Throw when an unknown instruction is supplied
+            </summary>
+        </member>
+        <member name="M:UnsupportedInstructionException.#ctor">
+            <summary>
+            UnsupportedInstructionException
+            </summary>
+        </member>
+        <member name="M:UnsupportedInstructionException.#ctor(System.String)">
+            <summary>
+            UnsupportedInstructionException
+            </summary>
+            <param name="message">message to return when exception is thrown.</param>
+        </member>
+        <member name="M:UnsupportedInstructionException.#ctor(System.String,System.Exception)">
+            <summary>
+            UnsupportedInstructionException
+            </summary>
+            <param name="message">message to return when exception is thrown.</param>
+            <param name="inner">inner exception details.</param>
+        </member>
+    </members>
+</doc>

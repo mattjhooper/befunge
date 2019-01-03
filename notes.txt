@@ -1,0 +1,32 @@
+>1.v\n   >2.v\n      >3.@
+
+>1.v   >4.\n   >2.>?<\n       >3.@
+
+>1.v   >4.
+   >2.>?<
+       >3.@
+
+>8 :1`
+
+
+">8 2%v\n  @.1_0.@"
+
+>8 2%v
+  @.1_0.@
+
+>8 : 2v2:    <
+      `      /
+      !      2 
+@,"t" _  :2%!|
+             >"f",@  
+
+>8 : 1v1:<\n      `  .\n      !  :\n    @._2/^   
+
+>8 : 2v2:    <\n      `      .\n      !      :\n@,"T"._2/:2%!|\n             >"F",@
+
+>8 : 2v2:    <\n      `      /\n      !      2 \n@,"t" _  :2%!|\n             >"f",@
+
+https://docs.microsoft.com/en-us/dotnet/csharp/codedoc
+
+dotnet lambda deploy-function BefungeLambda
+dotnet lambda invoke-function BefungeLambda --payload ">987v>.v\nv456<  :\n>321 ^ _@"

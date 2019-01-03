@@ -1,0 +1,15 @@
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\bin\Debug\netcoreapp2.1\BefungeLambda.deps.json
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\bin\Debug\netcoreapp2.1\BefungeLambda.runtimeconfig.json
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\bin\Debug\netcoreapp2.1\BefungeLambda.runtimeconfig.dev.json
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\bin\Debug\netcoreapp2.1\BefungeLambda.dll
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\bin\Debug\netcoreapp2.1\BefungeLambda.pdb
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\bin\Debug\netcoreapp2.1\Befunge.Lib.dll
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\bin\Debug\netcoreapp2.1\Befunge.Lib.pdb
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\bin\Debug\netcoreapp2.1\Befunge.Lib.xml
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\obj\Debug\netcoreapp2.1\BefungeLambda.csprojAssemblyReference.cache
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\obj\Debug\netcoreapp2.1\BefungeLambda.csproj.CoreCompileInputs.cache
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\obj\Debug\netcoreapp2.1\BefungeLambda.AssemblyInfoInputs.cache
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\obj\Debug\netcoreapp2.1\BefungeLambda.AssemblyInfo.cs
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\obj\Debug\netcoreapp2.1\BefungeLambda.csproj.CopyComplete
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\obj\Debug\netcoreapp2.1\BefungeLambda.dll
+C:\dev\befunge\Befunge.Lambda\src\BefungeLambda\obj\Debug\netcoreapp2.1\BefungeLambda.pdb

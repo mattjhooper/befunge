@@ -1,0 +1,14 @@
+C:\dev\befunge\Befunge.Lambda\src\Befunge.Lambda\bin\Release\netcoreapp2.1\rhel.7.2-x64\Befunge.Lambda.deps.json
+C:\dev\befunge\Befunge.Lambda\src\Befunge.Lambda\bin\Release\netcoreapp2.1\rhel.7.2-x64\Befunge.Lambda.runtimeconfig.json
+C:\dev\befunge\Befunge.Lambda\src\Befunge.Lambda\bin\Release\netcoreapp2.1\rhel.7.2-x64\Befunge.Lambda.runtimeconfig.dev.json
+C:\dev\befunge\Befunge.Lambda\src\Befunge.Lambda\bin\Release\netcoreapp2.1\rhel.7.2-x64\Befunge.Lambda.dll
+C:\dev\befunge\Befunge.Lambda\src\Befunge.Lambda\bin\Release\netcoreapp2.1\rhel.7.2-x64\Befunge.Lambda.pdb
+C:\dev\befunge\Befunge.Lambda\src\Befunge.Lambda\bin\Release\netcoreapp2.1\rhel.7.2-x64\Befunge.Lib.dll
+C:\dev\befunge\Befunge.Lambda\src\Befunge.Lambda\bin\Release\netcoreapp2.1\rhel.7.2-x64\Befunge.Lib.pdb
+C:\dev\befunge\Befunge.Lambda\src\Befunge.Lambda\obj\Release\netcoreapp2.1\rhel.7.2-x64\Befunge.Lambda.csprojAssemblyReference.cache
+C:\dev\befunge\Befunge.Lambda\src\Befunge.Lambda\obj\Release\netcoreapp2.1\rhel.7.2-x64\Befunge.Lambda.csproj.CoreCompileInputs.cache
+C:\dev\befunge\Befunge.Lambda\src\Befunge.Lambda\obj\Release\netcoreapp2.1\rhel.7.2-x64\Befunge.Lambda.AssemblyInfoInputs.cache
+C:\dev\befunge\Befunge.Lambda\src\Befunge.Lambda\obj\Release\netcoreapp2.1\rhel.7.2-x64\Befunge.Lambda.AssemblyInfo.cs
+C:\dev\befunge\Befunge.Lambda\src\Befunge.Lambda\obj\Release\netcoreapp2.1\rhel.7.2-x64\Befunge.Lambda.csproj.CopyComplete
+C:\dev\befunge\Befunge.Lambda\src\Befunge.Lambda\obj\Release\netcoreapp2.1\rhel.7.2-x64\Befunge.Lambda.dll
+C:\dev\befunge\Befunge.Lambda\src\Befunge.Lambda\obj\Release\netcoreapp2.1\rhel.7.2-x64\Befunge.Lambda.pdb
