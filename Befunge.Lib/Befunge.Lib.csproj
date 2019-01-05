@@ -8,4 +8,19 @@
     <DocumentationFile>C:\dev\befunge\Befunge.Lib\Befunge.Lib.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>Befunge.Lib</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <title>Befunge Interpreter</title>
+    <Authors>Matt Hooper</Authors>
+    <!-- Project URL provides a link for the gallery -->
+    <PackageProjectUrl>https://github.com/mattjhooper/befunge</PackageProjectUrl>
+
+         <!-- License information is displayed on the gallery -->
+    <PackageLicenseUrl>https://github.com/mattjhooper/befunge/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageReleaseNotes>First Version</PackageReleaseNotes>
+    <PackageDescription>Befunge Interpreter Library</PackageDescription>
+    <!-- Tags appear in the gallery and can be used for tag searches -->
+    <PackageTags>befunge-interpreter befunge befunge-93 csharp dotnet-core erlang</PackageTags>    
+   </PropertyGroup> 
 </Project>

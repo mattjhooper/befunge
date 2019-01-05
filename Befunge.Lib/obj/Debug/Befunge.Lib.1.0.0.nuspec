@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Befunge.Lib</id>
+    <version>1.0.0</version>
+    <title>Befunge Interpreter</title>
+    <authors>Matt Hooper</authors>
+    <owners>Matt Hooper</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/mattjhooper/befunge/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/mattjhooper/befunge</projectUrl>
+    <description>Befunge Interpreter Library</description>
+    <releaseNotes>First Version</releaseNotes>
+    <tags>befunge-interpreter befunge befunge-93 csharp dotnet-core erlang</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\dev\befunge\Befunge.Lib\bin\Debug\netstandard2.0\Befunge.Lib.dll" target="lib\netstandard2.0\Befunge.Lib.dll" />
+    <file src="C:\dev\befunge\Befunge.Lib\bin\Debug\netstandard2.0\Befunge.Lib.xml" target="lib\netstandard2.0\Befunge.Lib.xml" />
+  </files>
+</package>
