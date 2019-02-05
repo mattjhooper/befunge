@@ -2,7 +2,8 @@ using System;
 using Befunge.Runtime;
 using Befunge.Instructions;
 
-namespace Befunge.Mode {
+namespace Befunge.Mode
+{
     /// <summary>
     /// String mode.
     /// </summary>
@@ -20,16 +21,17 @@ namespace Befunge.Mode {
         #endregion
 
         #region properties
-        
+
         /// <summary>
         /// Returns true if this is Number mode and false otherwise
         /// </summary>
-        public bool IsNumberMode { get {return false;} }
+        public bool IsNumberMode { get { return false; } }
 
         #endregion
 
         #region constructors
-        private StringMode() {
+        private StringMode()
+        {
 
         }
 
@@ -40,9 +42,10 @@ namespace Befunge.Mode {
         /// <summary>
         /// Execute the current instruction
         /// </summary>
-        public void ExecuteInstruction(IBefungeRunTime runTime) {
-            IInstruction currentInstruction = runTime.CurrentInstruction == '"' ? _toggleStringMode :  _defaultInstruction;
-            currentInstruction.Execute(runTime); 
+        public void ExecuteInstruction(IBefungeRunTime runTime)
+        {
+            IInstruction currentInstruction = runTime.CurrentInstruction == '"' ? _toggleStringMode : _defaultInstruction;
+            currentInstruction.Execute(runTime);
         }
 
         /// <summary>

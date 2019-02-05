@@ -2,13 +2,15 @@ using System;
 using Befunge.Instructions;
 using Befunge.Mode;
 
-namespace Befunge.Runtime {
+namespace Befunge.Runtime
+{
 
     /// <summary>
     /// IBefungeRunTime interface.
     /// Contains the methods that are needed to run the befunge interpreter
     /// </summary>
-    public interface IBefungeRunTime {
+    public interface IBefungeRunTime
+    {
 
         #region properties
         /// <summary>
@@ -77,12 +79,12 @@ namespace Befunge.Runtime {
         /// <param name="putPosition">x/y coordinate position to store the supplied character.</param>
         /// <param name="value">the character to store.</param>
         void PutValue(CoOrds putPosition, char value);
-        
+
         /// <summary>
         /// Read the current instruction
         /// </summary>
         void ReadInstruction();
-        
+
         /// <summary>
         /// Retrieve the last value stored in memory and return it.
         /// </summary>
@@ -99,7 +101,7 @@ namespace Befunge.Runtime {
         /// </returns>
         /// <param name="defaultValue">the default value to return if there is nothing in memory.</param>
         int RetrieveLastValueOrDefault(int defaultValue);
-        
+
         /// <summary>
         /// Peek at the last value stored in memory and return it without removing from memory.
         /// </summary>
@@ -107,7 +109,7 @@ namespace Befunge.Runtime {
         /// Returns the last integer value stored in memory
         /// </returns>
         int ReviewLastValue();
-        
+
         /// <summary>
         /// Peek at the last value stored in memory and return it without removing from memory.
         /// If no value has been stored, return the supplied default value
@@ -117,7 +119,7 @@ namespace Befunge.Runtime {
         /// </returns>
         /// <param name="defaultValue">the default value to return if the stack is empty.</param>
         int ReviewLastValueOrDefault(int defaultValue);
-        
+
         /// <summary>
         /// Store the supplied value in memory
         /// </summary>

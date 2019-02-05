@@ -11,14 +11,15 @@ namespace Befunge.UnitTests.Instructions
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_BranchLeftOrRightShould() 
+        public Instructions_BranchLeftOrRightShould()
         {
             _sit = new BranchLeftOrRight();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]
-        public void MoveRightForZero() {
+        public void MoveRightForZero()
+        {
             // Arrange
             _runtime.SetupSequence(r => r.RetrieveLastValue()).Returns(0);
 
@@ -34,7 +35,8 @@ namespace Befunge.UnitTests.Instructions
         [InlineData(2)]
         [InlineData(10)]
         [InlineData(-1)]
-        public void MoveLeftForOthers(int val) {
+        public void MoveLeftForOthers(int val)
+        {
             // Arrange
             _runtime.SetupSequence(r => r.RetrieveLastValue()).Returns(val);
 
@@ -42,7 +44,7 @@ namespace Befunge.UnitTests.Instructions
             _sit.Execute(_runtime.Object);
 
             // Assert
-            Assert.True(_runtime.Object.CurrentDirection is MoveLeft);         
+            Assert.True(_runtime.Object.CurrentDirection is MoveLeft);
         }
 
     }

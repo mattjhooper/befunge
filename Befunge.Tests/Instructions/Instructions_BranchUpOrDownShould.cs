@@ -11,14 +11,15 @@ namespace Befunge.UnitTests.Instructions
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_BranchUpOrDownShould() 
+        public Instructions_BranchUpOrDownShould()
         {
             _sit = new BranchUpOrDown();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]
-        public void MoveDownForZero() {
+        public void MoveDownForZero()
+        {
             // Arrange
             _runtime.SetupSequence(r => r.RetrieveLastValue()).Returns(0);
 
@@ -26,7 +27,7 @@ namespace Befunge.UnitTests.Instructions
             _sit.Execute(_runtime.Object);
 
             // Assert  
-            Assert.True(_runtime.Object.CurrentDirection is MoveDown);         
+            Assert.True(_runtime.Object.CurrentDirection is MoveDown);
         }
 
         [Theory]
@@ -34,7 +35,8 @@ namespace Befunge.UnitTests.Instructions
         [InlineData(2)]
         [InlineData(10)]
         [InlineData(-1)]
-        public void MoveUpForOthers(int val) {
+        public void MoveUpForOthers(int val)
+        {
             // Arrange
             _runtime.SetupSequence(r => r.RetrieveLastValue()).Returns(val);
 
@@ -42,7 +44,7 @@ namespace Befunge.UnitTests.Instructions
             _sit.Execute(_runtime.Object);
 
             // Assert  
-            Assert.True(_runtime.Object.CurrentDirection is MoveUp);   
+            Assert.True(_runtime.Object.CurrentDirection is MoveUp);
         }
 
     }

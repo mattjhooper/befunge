@@ -10,14 +10,15 @@ namespace Befunge.UnitTests.Instructions
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_SwapShould() 
+        public Instructions_SwapShould()
         {
             _sit = new Swap();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]
-        public void PushCorrectResult() {
+        public void PushCorrectResult()
+        {
             // Arrange
             _runtime.Setup(r => r.RetrieveLastValue()).Returns(1);
             _runtime.Setup(r => r.RetrieveLastValueOrDefault(0)).Returns(0);
@@ -28,8 +29,8 @@ namespace Befunge.UnitTests.Instructions
             // Assert
             _runtime.Verify(r => r.RetrieveLastValueOrDefault(0), Times.Exactly(1));
             _runtime.Verify(r => r.RetrieveLastValue(), Times.Exactly(1));
-            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i==0)), Times.Exactly(1));
-            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i==1)), Times.Exactly(1));
+            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i == 0)), Times.Exactly(1));
+            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i == 1)), Times.Exactly(1));
 
         }
 

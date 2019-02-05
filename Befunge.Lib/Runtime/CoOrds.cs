@@ -16,7 +16,7 @@ namespace Befunge.Runtime
         /// <summary>
         /// Initialise a new x/y CoOrd
         /// </summary>
-         /// <example>
+        /// <example>
         /// <code>
         /// CoOrds startPoint = new CoOrds(0, 0);
         /// </code>

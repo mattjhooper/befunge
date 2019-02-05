@@ -9,7 +9,7 @@ public class UnsupportedInstructionException : Exception
     /// UnsupportedInstructionException
     /// </summary>
     public UnsupportedInstructionException()
-    {        
+    {
     }
 
     /// <summary>
@@ -17,8 +17,8 @@ public class UnsupportedInstructionException : Exception
     /// </summary>
     /// <param name="message">message to return when exception is thrown.</param>
     public UnsupportedInstructionException(string message)
-        :base(message)
-    {        
+        : base(message)
+    {
     }
 
     /// <summary>

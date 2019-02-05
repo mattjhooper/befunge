@@ -16,60 +16,68 @@ namespace Befunge.UnitTests.Runtime
         private readonly Mock<TextReader> _textReaderMock;
         private readonly Mock<TextWriter> _textWriterMock;
 
-        public BefungeRuntime_Should() {
-            
-            
+        public BefungeRuntime_Should()
+        {
+
+
             _textReaderMock = new Mock<TextReader>();
             _textWriterMock = new Mock<TextWriter>();
             _runtime = new BefungeRunTime(_befungeCode, NumberMode.Instance, _textWriterMock.Object, _textReaderMock.Object);
         }
 
         [Fact]
-        public void HaveCorrectDefaultCurrPos() {
+        public void HaveCorrectDefaultCurrPos()
+        {
             // Assert
-            Assert.Equal(new CoOrds(0,0), _runtime.CurrentPosition);
+            Assert.Equal(new CoOrds(0, 0), _runtime.CurrentPosition);
 
         }
 
         [Fact]
-        public void HaveCorrectDefaultCurrentInstruction() {
+        public void HaveCorrectDefaultCurrentInstruction()
+        {
             // Assert
             Assert.Equal('>', _runtime.CurrentInstruction);
 
         }
 
         [Fact]
-        public void HaveCorrectDefaultCurrentDirection() {
+        public void HaveCorrectDefaultCurrentDirection()
+        {
             // Assert
             Assert.True(_runtime.CurrentDirection is MoveRight);
 
         }
 
         [Fact]
-        public void HaveCorrectDefaultEndProgram() {
-           
+        public void HaveCorrectDefaultEndProgram()
+        {
+
             // Assert
             Assert.False(_runtime.EndProgram);
 
         }
 
         [Fact]
-        public void HaveCorrectDefaultMode() {
+        public void HaveCorrectDefaultMode()
+        {
             // Assert
             Assert.True(_runtime.CurrentMode.IsNumberMode);
 
         }
 
         [Fact]
-        public void HaveCorrectMaxExtent() {
-            
+        public void HaveCorrectMaxExtent()
+        {
+
             // Assert
-            Assert.Equal(new CoOrds(8,2), _runtime.MaxExtent);
+            Assert.Equal(new CoOrds(8, 2), _runtime.MaxExtent);
 
         }
 
         [Fact]
-        public void StoreAndRetrieveResults() {
+        public void StoreAndRetrieveResults()
+        {
             // Act
             _runtime.StoreValue(3);
             _runtime.StoreValue(2);
@@ -84,8 +92,9 @@ namespace Befunge.UnitTests.Runtime
         }
 
         [Fact]
-        public void StoreAndReviewResults() {
-             // Act
+        public void StoreAndReviewResults()
+        {
+            // Act
             _runtime.StoreValue(3);
             _runtime.StoreValue(2);
             _runtime.StoreValue(1);
@@ -102,9 +111,10 @@ namespace Befunge.UnitTests.Runtime
         }
 
         [Fact]
-        public void MovePositionAndReadInstruction() {
+        public void MovePositionAndReadInstruction()
+        {
             // Act
-            _runtime.CurrentPosition = new CoOrds(1,1);
+            _runtime.CurrentPosition = new CoOrds(1, 1);
             _runtime.ReadInstruction();
 
             // Assert
@@ -112,32 +122,34 @@ namespace Befunge.UnitTests.Runtime
         }
 
         [Fact]
-        public void PutAndGetCorrectValue() {
+        public void PutAndGetCorrectValue()
+        {
             // Arrange
-            var putPosition = new CoOrds(1,1);
+            var putPosition = new CoOrds(1, 1);
 
             // Act
             _runtime.PutValue(putPosition, 'X');
 
-            
+
             // Assert
             Assert.Equal('X', _runtime.GetValue(putPosition));
         }
 
         [Fact]
-        public void AlwaysHaveConsistentExtents() {
+        public void AlwaysHaveConsistentExtents()
+        {
             // Arrange
             var defaultExtent = _runtime.MaxExtent;
 
             CoOrds position;
             position.x = 0;
 
-            for (position.y = 1; position.y <= defaultExtent.y; position.y++) 
+            for (position.y = 1; position.y <= defaultExtent.y; position.y++)
             {
                 // Act
-                _runtime.CurrentPosition = position; 
-                Assert.Equal(_runtime.MaxExtent, defaultExtent);    
-            }            
+                _runtime.CurrentPosition = position;
+                Assert.Equal(_runtime.MaxExtent, defaultExtent);
+            }
         }
 
         [Theory]
@@ -145,10 +157,11 @@ namespace Befunge.UnitTests.Runtime
         [InlineData(0, -1)]
         [InlineData(0, 100)]
         [InlineData(100, 0)]
-        public void RaiseInvalidOperationExceptionForBadPosition(int x, int y) {
+        public void RaiseInvalidOperationExceptionForBadPosition(int x, int y)
+        {
             // Arrange
             CoOrds testPosition = new CoOrds(x, y);
-            
+
             // Assert
             var ex = Assert.Throws<InvalidOperationException>(() => _runtime.CurrentPosition = testPosition);
             Assert.Equal(ex.Message, $"Invalid Position specified: [{x},{y}].");
@@ -159,10 +172,11 @@ namespace Befunge.UnitTests.Runtime
         [InlineData(0, -1)]
         [InlineData(0, 100)]
         [InlineData(100, 0)]
-        public void RaiseInvalidOperationExceptionForBadPutValuePosition(int x, int y) {
+        public void RaiseInvalidOperationExceptionForBadPutValuePosition(int x, int y)
+        {
             // Arrange
             CoOrds testPosition = new CoOrds(x, y);
-            
+
             // Assert
             var ex = Assert.Throws<InvalidOperationException>(() => _runtime.PutValue(testPosition, 'X'));
             Assert.Equal(ex.Message, $"Invalid Position specified: [{x},{y}].");
@@ -173,18 +187,20 @@ namespace Befunge.UnitTests.Runtime
         [InlineData(0, -1)]
         [InlineData(0, 100)]
         [InlineData(100, 0)]
-        public void RaiseInvalidOperationExceptionForBadGetValuePosition(int x, int y) {
+        public void RaiseInvalidOperationExceptionForBadGetValuePosition(int x, int y)
+        {
             // Arrange
             CoOrds testPosition = new CoOrds(x, y);
-            
+
             // Assert
             var ex = Assert.Throws<InvalidOperationException>(() => _runtime.GetValue(testPosition));
             Assert.Equal(ex.Message, $"Invalid Position specified: [{x},{y}].");
         }
 
         [Fact]
-        public void ThrowExceptionIfRetrieveLastValueIsCalledWhenStackIsEmpty() {
-            
+        public void ThrowExceptionIfRetrieveLastValueIsCalledWhenStackIsEmpty()
+        {
+
             // Assert
             Assert.Equal(1, _runtime.RetrieveLastValueOrDefault(1));
             var ex = Assert.Throws<InvalidOperationException>(() => _runtime.RetrieveLastValue());
@@ -193,8 +209,9 @@ namespace Befunge.UnitTests.Runtime
         }
 
         [Fact]
-        public void ThrowExceptionIfReviewLastValueIsCalledWhenStackIsEmpty() {
-            
+        public void ThrowExceptionIfReviewLastValueIsCalledWhenStackIsEmpty()
+        {
+
             // Assert
             Assert.Equal(1, _runtime.ReviewLastValueOrDefault(1));
             var ex = Assert.Throws<InvalidOperationException>(() => _runtime.ReviewLastValue());
@@ -203,27 +220,29 @@ namespace Befunge.UnitTests.Runtime
         }
 
         [Fact]
-        public void OutputPromptAndReturnInput() {
+        public void OutputPromptAndReturnInput()
+        {
             // Arrange
             string prompt = "Please provide a number.";
             _textReaderMock.Setup(r => r.ReadLine()).Returns("1");
 
             Assert.Equal("1", _runtime.Input(prompt));
-            _textWriterMock.Verify(m => m.Write(It.Is<string>(s => s==prompt)), Times.Exactly(1));
+            _textWriterMock.Verify(m => m.Write(It.Is<string>(s => s == prompt)), Times.Exactly(1));
         }
 
         [Fact]
-        public void HandleEmptyReads() {
+        public void HandleEmptyReads()
+        {
             // Arrange
             string prompt = "Please provide a number.";
             _textReaderMock.Setup(r => r.ReadLine()).Returns("");
 
             // Act
             _runtime.Input(prompt);
-            
+
             // Assert
             //Assert.Equal('', _runtime.Input(prompt));
-            _textWriterMock.Verify(m => m.Write(It.Is<string>(s => s==prompt)), Times.Exactly(1));
+            _textWriterMock.Verify(m => m.Write(It.Is<string>(s => s == prompt)), Times.Exactly(1));
         }
     }
-}    
+}

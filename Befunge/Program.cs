@@ -17,15 +17,15 @@ namespace Befunge.Exe
 
             using (StreamWriter sw = new StreamWriter("befunge_output.txt"))
             {
-               //BefungeInterpreter.Interpret(">.@");
-               //BefungeInterpreter.Interpret("v\n> ^@");
-               //BefungeInterpreter.Interpret(">7 : 1v1:<\n      `  .\n      !  :\n    @._2/^ ");
-               
-               // Power Of 2
-               BefungeInterpreter.Interpret(">& : 2v2:    <\n      `      /\n      !      2 \n@,\"t\" _  :2%!|\n             >\"f\",@");
-               
-               // Ask for an integer and character
-               //BefungeInterpreter.Interpret("&~,.@");
+                //BefungeInterpreter.Interpret(">.@");
+                //BefungeInterpreter.Interpret("v\n> ^@");
+                //BefungeInterpreter.Interpret(">7 : 1v1:<\n      `  .\n      !  :\n    @._2/^ ");
+
+                // Power Of 2
+                BefungeInterpreter.Interpret(">& : 2v2:    <\n      `      /\n      !      2 \n@,\"t\" _  :2%!|\n             >\"f\",@");
+
+                // Ask for an integer and character
+                //BefungeInterpreter.Interpret("&~,.@");
             }
         }
     }

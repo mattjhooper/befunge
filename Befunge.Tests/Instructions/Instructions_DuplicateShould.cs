@@ -10,14 +10,15 @@ namespace Befunge.UnitTests.Instructions
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_DuplicateShould() 
+        public Instructions_DuplicateShould()
         {
             _sit = new Duplicate();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]
-        public void PushCorrectResult() {
+        public void PushCorrectResult()
+        {
             // Arrange
             _runtime.SetupSequence(r => r.ReviewLastValueOrDefault(0)).Returns(1);
 
@@ -26,7 +27,7 @@ namespace Befunge.UnitTests.Instructions
 
             // Assert
             _runtime.Verify(r => r.ReviewLastValueOrDefault(0), Times.Exactly(1));
-            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i==1)), Times.Exactly(1));
+            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i == 1)), Times.Exactly(1));
 
         }
 
@@ -35,7 +36,8 @@ namespace Befunge.UnitTests.Instructions
         [InlineData(5)]
         [InlineData(-1)]
         [InlineData(0)]
-        public void PushCorrectResults(int a) {
+        public void PushCorrectResults(int a)
+        {
             // Arrange
             _runtime.SetupSequence(r => r.ReviewLastValueOrDefault(0)).Returns(a);
 
@@ -44,7 +46,7 @@ namespace Befunge.UnitTests.Instructions
 
             // Assert
             _runtime.Verify(r => r.ReviewLastValueOrDefault(0), Times.Exactly(1));
-            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i==a)), Times.Exactly(1));
+            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i == a)), Times.Exactly(1));
 
         }
     }

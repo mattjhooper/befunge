@@ -10,14 +10,15 @@ namespace Befunge.UnitTests.Instructions
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_AskForANumberShould() 
+        public Instructions_AskForANumberShould()
         {
             _sit = new AskForANumber();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]
-        public void PushCorrectResult() {
+        public void PushCorrectResult()
+        {
             // Arrange
             _runtime.Setup(r => r.Input(It.IsAny<string>())).Returns("1");
 
@@ -25,13 +26,14 @@ namespace Befunge.UnitTests.Instructions
             _sit.Execute(_runtime.Object);
 
             // Assert
-            _runtime.Verify(r => r.Input(It.Is<string>(s=>s=="Please supply an Integer:")), Times.Exactly(1));
-            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i==1)), Times.Exactly(1));
+            _runtime.Verify(r => r.Input(It.Is<string>(s => s == "Please supply an Integer:")), Times.Exactly(1));
+            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i == 1)), Times.Exactly(1));
 
-        }  
+        }
 
         [Fact]
-        public void KeepTryingUntilANumberIsReturned() {
+        public void KeepTryingUntilANumberIsReturned()
+        {
             // Arrange
             _runtime.SetupSequence(r => r.Input(It.IsAny<string>())).Returns("A").Returns("B").Returns("1");
 
@@ -39,9 +41,9 @@ namespace Befunge.UnitTests.Instructions
             _sit.Execute(_runtime.Object);
 
             // Assert
-            _runtime.Verify(r => r.Input(It.Is<string>(s=>s=="Please supply an Integer:")), Times.Exactly(3));
-            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i==1)), Times.Exactly(1));
+            _runtime.Verify(r => r.Input(It.Is<string>(s => s == "Please supply an Integer:")), Times.Exactly(3));
+            _runtime.Verify(r => r.StoreValue(It.Is<int>(i => i == 1)), Times.Exactly(1));
 
-        }          
+        }
     }
 }

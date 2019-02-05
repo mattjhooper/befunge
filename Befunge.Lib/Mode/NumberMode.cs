@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using Befunge.Instructions;
 using Befunge.Runtime;
 
-namespace Befunge.Mode {
+namespace Befunge.Mode
+{
     /// <summary>
     /// Number Mode.
     /// </summary>
-    public sealed class NumberMode : IMode {
+    public sealed class NumberMode : IMode
+    {
 
         #region lazy_singleton
         private static readonly Lazy<NumberMode> _lazyNumberModeSingleton = new Lazy<NumberMode>(() => new NumberMode());
@@ -17,21 +19,22 @@ namespace Befunge.Mode {
         #region fields
 
         private readonly IInstruction _defaultInstruction = new NumberDefault();
-        private readonly Dictionary<char,IInstruction> _instructionsLookup;
+        private readonly Dictionary<char, IInstruction> _instructionsLookup;
 
         #endregion
 
         #region properties
-        
+
         /// <summary>
         /// Returns true if this is Number mode and false otherwise
         /// </summary>
-        public bool IsNumberMode { get {return true;} }
+        public bool IsNumberMode { get { return true; } }
 
         #endregion
 
         #region constructors
-        private NumberMode() {
+        private NumberMode()
+        {
             _instructionsLookup = new Dictionary<char, IInstruction>();
             SetupInstructionLookup();
         }
@@ -39,16 +42,17 @@ namespace Befunge.Mode {
         #endregion
 
         #region methods
-        
+
         /// <summary>
         /// Execute the current instruction
         /// </summary>
-        public void ExecuteInstruction(IBefungeRunTime runTime) {
+        public void ExecuteInstruction(IBefungeRunTime runTime)
+        {
             IInstruction currentInstruction = _defaultInstruction;
 
             if (_instructionsLookup.ContainsKey(runTime.CurrentInstruction))
                 _instructionsLookup.TryGetValue(runTime.CurrentInstruction, out currentInstruction);
-            currentInstruction.Execute(runTime); 
+            currentInstruction.Execute(runTime);
         }
 
         /// <summary>
@@ -59,7 +63,8 @@ namespace Befunge.Mode {
         /// </returns>
         public static NumberMode Instance { get { return _lazyNumberModeSingleton.Value; } }
 
-        private void SetupInstructionLookup() {
+        private void SetupInstructionLookup()
+        {
             _instructionsLookup.Clear();
             _instructionsLookup.Add('+', new Add());
             _instructionsLookup.Add('-', new Subtract());

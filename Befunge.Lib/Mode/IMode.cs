@@ -1,6 +1,7 @@
 using Befunge.Runtime;
 
-namespace Befunge.Mode {
+namespace Befunge.Mode
+{
     /// <summary>
     /// Mode Interface.
     /// </summary>

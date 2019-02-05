@@ -10,15 +10,16 @@ namespace Befunge.UnitTests.Instructions
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_Discard() 
+        public Instructions_Discard()
         {
             _sit = new Discard();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
-        
+
         [Fact]
-        public void PushCorrectResults() {
+        public void PushCorrectResults()
+        {
             // Arrange
             _runtime.Setup(r => r.RetrieveLastValue()).Returns(0);
 

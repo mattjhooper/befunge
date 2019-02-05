@@ -1,11 +1,13 @@
 using System;
 using Befunge.Runtime;
 
-namespace Befunge.Instructions {
+namespace Befunge.Instructions
+{
     /// <summary>
     /// The Instruction interface
     /// </summary>
-    public interface IInstruction {
+    public interface IInstruction
+    {
         /// <summary>
         /// Execute the instruction
         /// </summary>

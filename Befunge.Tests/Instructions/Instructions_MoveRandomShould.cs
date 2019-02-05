@@ -13,14 +13,15 @@ namespace Befunge.UnitTests.Instructions
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_MoveRandomShould() 
+        public Instructions_MoveRandomShould()
         {
             _sit = new MoveRandom();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]
-        public void MoveRandomly() {
+        public void MoveRandomly()
+        {
             // Arrange
             // Setup a dictionary to keep a count of the number of directions
             Dictionary<Type, int> directionCount = new Dictionary<Type, int>();
@@ -29,7 +30,8 @@ namespace Befunge.UnitTests.Instructions
             directionCount.Add(typeof(MoveRight), 0);
             directionCount.Add(typeof(MoveUp), 0);
 
-            for (int i=0; i<20; i++) {
+            for (int i = 0; i < 20; i++)
+            {
                 // Act
                 _sit.Execute(_runtime.Object);
 
@@ -39,8 +41,8 @@ namespace Befunge.UnitTests.Instructions
             }
 
             // Assert
-            Assert.True(directionCount.All( v => 1 <= v.Value ));
-            
+            Assert.True(directionCount.All(v => 1 <= v.Value));
+
         }
     }
 }

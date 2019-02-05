@@ -10,14 +10,15 @@ namespace Befunge.UnitTests.Instructions
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_EndProgramShould() 
+        public Instructions_EndProgramShould()
         {
             _sit = new EndProgram();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]
-        public void SetEndProgram() {
+        public void SetEndProgram()
+        {
             // Act
             _sit.Execute(_runtime.Object);
 
@@ -25,6 +26,6 @@ namespace Befunge.UnitTests.Instructions
             _runtime.VerifySet(r => r.EndProgram = true);
         }
 
-        
+
     }
 }

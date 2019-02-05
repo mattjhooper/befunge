@@ -13,29 +13,29 @@ namespace Befunge.AcceptanceTests
         {
             Assert.Equal("9", BefungeInterpreter.Interpret("9.@"));
         }
-        
-         
+
+
         [Fact]
         public void AddTwoNumbers()
         {
             Assert.Equal("3", BefungeInterpreter.Interpret("21+.@"));
-        }  
+        }
 
         [Theory]
-        [InlineData("11+2+2*.@","8")]
-        [InlineData("54321.....@","12345")]
-        [InlineData("21`9*55+*.@","90")]
-        [InlineData("21`9*55+*9+9/.@","11")]
+        [InlineData("11+2+2*.@", "8")]
+        [InlineData("54321.....@", "12345")]
+        [InlineData("21`9*55+*.@", "90")]
+        [InlineData("21`9*55+*9+9/.@", "11")]
         public void HandleMultipleInstructions(string testInput, string expectedOutput)
         {
             Assert.Equal(expectedOutput, BefungeInterpreter.Interpret(testInput));
-        } 
+        }
 
         [Fact]
         public void HandleDirectionChanges()
         {
             Assert.Equal("123456789", BefungeInterpreter.Interpret(">987v>.v\nv456<  :\n>321 ^ _@"));
-        } 
+        }
 
         [Fact]
         public void HandleFactorial()
@@ -48,21 +48,21 @@ namespace Befunge.AcceptanceTests
         {
             Assert.Equal("0", BefungeInterpreter.Interpret("9!.@"));
             Assert.Equal("1", BefungeInterpreter.Interpret("0!.@"));
-        }  
+        }
 
         [Fact]
         public void PrintHelloWorld()
         {
             Assert.Equal("Hello World!\n", BefungeInterpreter.Interpret(">25*\"!dlroW olleH\":v\n                v:,_@\n                >  ^"));
-            Assert.Equal("Hello World!", BefungeInterpreter.Interpret("v>  ,,,,,,,,,,,,@\n<^\"Hello World!\""));                         
-        } 
+            Assert.Equal("Hello World!", BefungeInterpreter.Interpret("v>  ,,,,,,,,,,,,@\n<^\"Hello World!\""));
+        }
 
         [Fact]
         public void HandleRandomDirection()
-        {            
+        {
             string output = BefungeInterpreter.Interpret("v@.<\n >1^\n>?<^\n >2^");
             Assert.True("1" == output || "2" == output);
-        } 
+        }
 
         [Fact]
         public void HandleSieve()
@@ -92,7 +92,7 @@ namespace Befunge.AcceptanceTests
         [InlineData(9)]
         public void DetermineOddOrEven(int i)
         {
-            Assert.Equal((i%2).ToString(), BefungeInterpreter.Interpret(">" + i.ToString() + " 2%v\n  @.1_0.@"));
+            Assert.Equal((i % 2).ToString(), BefungeInterpreter.Interpret(">" + i.ToString() + " 2%v\n  @.1_0.@"));
         }
 
         [Theory]
@@ -105,7 +105,7 @@ namespace Befunge.AcceptanceTests
         [InlineData(7, "f")]
         [InlineData(8, "t")]
         [InlineData(9, "f")]
-        public void HandlePowerOf2(int i, string res) 
+        public void HandlePowerOf2(int i, string res)
         {
             Assert.Equal(res, BefungeInterpreter.Interpret(">" + i + " : 2v2:    <\n      `      /\n      !      2 \n@,\"t\" _  :2%!|\n             >\"f\",@"));
         }
@@ -119,8 +119,8 @@ namespace Befunge.AcceptanceTests
 
             using (StringReader reader = new StringReader(stringToRead.ToString()))
             {
-                Assert.Equal("a1", BefungeInterpreter.Interpret("&~,.@",null,reader));
+                Assert.Equal("a1", BefungeInterpreter.Interpret("&~,.@", null, reader));
             }
         }
-     }
+    }
 }

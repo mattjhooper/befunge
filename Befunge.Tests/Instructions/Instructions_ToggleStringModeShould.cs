@@ -12,34 +12,36 @@ namespace Befunge.UnitTests.Instructions
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_ToggleStringModeShould() 
+        public Instructions_ToggleStringModeShould()
         {
             _sit = new ToggleStringMode();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]
-        public void TurnOnStringMode() {
-            
+        public void TurnOnStringMode()
+        {
+
             // Act
             _sit.Execute(_runtime.Object);
 
             // Assert
-            Assert.False(_runtime.Object.CurrentMode.IsNumberMode);           
+            Assert.False(_runtime.Object.CurrentMode.IsNumberMode);
         }
 
         [Fact]
-        public void TurnOffStringMode() {
+        public void TurnOffStringMode()
+        {
             // Arrange
-            Mock<IMode> mode = new Mock<IMode>(); 
+            Mock<IMode> mode = new Mock<IMode>();
             mode.SetupGet(m => m.IsNumberMode).Returns(false);
             _runtime.SetupProperty(r => r.CurrentMode, mode.Object);
-            
+
             // Act
             _sit.Execute(_runtime.Object);
 
             // Assert
-            Assert.True(_runtime.Object.CurrentMode.IsNumberMode);           
+            Assert.True(_runtime.Object.CurrentMode.IsNumberMode);
         }
     }
 }

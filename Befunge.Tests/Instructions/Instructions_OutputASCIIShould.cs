@@ -10,14 +10,15 @@ namespace Befunge.UnitTests.Instructions
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_OutputASCIIShould() 
+        public Instructions_OutputASCIIShould()
         {
             _sit = new OutputASCII();
             _runtime = MockIBefungeRunTimeFactory.Create();
         }
 
         [Fact]
-        public void OutputCorrectResult() {
+        public void OutputCorrectResult()
+        {
             // Arrange
             _runtime.SetupSequence(r => r.RetrieveLastValue()).Returns(97);
 

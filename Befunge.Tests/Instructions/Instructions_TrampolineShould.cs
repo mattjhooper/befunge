@@ -11,7 +11,7 @@ namespace Befunge.UnitTests.Instructions
         private readonly IInstruction _sit;
         private readonly Mock<IBefungeRunTime> _runtime;
 
-        public Instructions_TrampolineShould() 
+        public Instructions_TrampolineShould()
         {
             _sit = new Trampoline();
             _runtime = MockIBefungeRunTimeFactory.Create();
@@ -19,7 +19,8 @@ namespace Befunge.UnitTests.Instructions
 
         [Theory]
         [InlineData(0, 0, 2, 0)]
-        public void SkipNextCellWhenDirectionIsMoveRight(int oldX, int oldY, int newX, int newY) {
+        public void SkipNextCellWhenDirectionIsMoveRight(int oldX, int oldY, int newX, int newY)
+        {
             // Arrange
             _runtime.SetupProperty(r => r.CurrentPosition, new CoOrds(oldX, oldY));
             _runtime.SetupProperty(r => r.CurrentDirection, MoveRight.Instance);
@@ -28,12 +29,13 @@ namespace Befunge.UnitTests.Instructions
             _sit.Execute(_runtime.Object);
 
             // Assert
-            _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(newX, newY));   
+            _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(newX, newY));
         }
 
         [Theory]
         [InlineData(2, 0, 0, 0)]
-        public void SkipNextCellWhenDirectionIsMoveLeft(int oldX, int oldY, int newX, int newY) {
+        public void SkipNextCellWhenDirectionIsMoveLeft(int oldX, int oldY, int newX, int newY)
+        {
             // Arrange
             _runtime.SetupProperty(r => r.CurrentPosition, new CoOrds(oldX, oldY));
             _runtime.SetupProperty(r => r.CurrentDirection, MoveLeft.Instance);
@@ -42,12 +44,13 @@ namespace Befunge.UnitTests.Instructions
             _sit.Execute(_runtime.Object);
 
             // Assert
-            _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(newX, newY));   
+            _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(newX, newY));
         }
 
         [Theory]
         [InlineData(0, 0, 0, 2)]
-        public void SkipNextCellWhenDirectionIsMoveDown(int oldX, int oldY, int newX, int newY) {
+        public void SkipNextCellWhenDirectionIsMoveDown(int oldX, int oldY, int newX, int newY)
+        {
             // Arrange
             _runtime.SetupProperty(r => r.CurrentPosition, new CoOrds(oldX, oldY));
             _runtime.SetupProperty(r => r.CurrentDirection, MoveDown.Instance);
@@ -56,12 +59,13 @@ namespace Befunge.UnitTests.Instructions
             _sit.Execute(_runtime.Object);
 
             // Assert
-            _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(newX, newY));   
+            _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(newX, newY));
         }
 
         [Theory]
         [InlineData(0, 2, 0, 0)]
-        public void SkipNextCellWhenDirectionIsMoveUp(int oldX, int oldY, int newX, int newY) {
+        public void SkipNextCellWhenDirectionIsMoveUp(int oldX, int oldY, int newX, int newY)
+        {
             // Arrange
             _runtime.SetupProperty(r => r.CurrentPosition, new CoOrds(oldX, oldY));
             _runtime.SetupProperty(r => r.CurrentDirection, MoveUp.Instance);
@@ -70,7 +74,7 @@ namespace Befunge.UnitTests.Instructions
             _sit.Execute(_runtime.Object);
 
             // Assert
-            _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(newX, newY));   
+            _runtime.VerifySet(r => r.CurrentPosition = new CoOrds(newX, newY));
         }
 
     }
