@@ -1,9 +1,0 @@
-C:\dev\befunge\Befunge.Lib\bin\Release\netstandard2.0\Befunge.Lib.deps.json
-C:\dev\befunge\Befunge.Lib\bin\Release\netstandard2.0\Befunge.Lib.dll
-C:\dev\befunge\Befunge.Lib\bin\Release\netstandard2.0\Befunge.Lib.pdb
-C:\dev\befunge\Befunge.Lib\obj\Release\netstandard2.0\Befunge.Lib.csprojAssemblyReference.cache
-C:\dev\befunge\Befunge.Lib\obj\Release\netstandard2.0\Befunge.Lib.csproj.CoreCompileInputs.cache
-C:\dev\befunge\Befunge.Lib\obj\Release\netstandard2.0\Befunge.Lib.AssemblyInfoInputs.cache
-C:\dev\befunge\Befunge.Lib\obj\Release\netstandard2.0\Befunge.Lib.AssemblyInfo.cs
-C:\dev\befunge\Befunge.Lib\obj\Release\netstandard2.0\Befunge.Lib.dll
-C:\dev\befunge\Befunge.Lib\obj\Release\netstandard2.0\Befunge.Lib.pdb
